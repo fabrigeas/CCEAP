@@ -38,7 +38,7 @@ Do both at the same time
 3 Design and implementation
 	-how is the Gui implemented
 	-design desisions
-		-why i choose this design
+	-why i choose this design
 	-ie user guide
 	-program documentation
 
