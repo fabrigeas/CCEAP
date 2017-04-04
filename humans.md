@@ -30,17 +30,17 @@ Do both at the same time
 
 2 related work 5 pages
 -show that I have read abt
-	-ie other solutions available
-	-what is already out there
-	-dont invent the weel instead deepen
-	-cite scientific publications
+	- ie other solutions available
+	- what is already out there
+	- dont invent the weel instead deepen
+	- cite scientific publications
 
 3 Design and implementation
-	-how is the Gui implemented
-	-design desisions
-	-why i choose this design
-	-ie user guide
-	-program documentation
+	- how is the Gui implemented
+	- design desisions
+	- why i choose this design
+	- ie user guide
+	- program documentation
 
 4 Discussion
 	- my remark abt the implementation
