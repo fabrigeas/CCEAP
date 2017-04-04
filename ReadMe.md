@@ -16,9 +16,9 @@ Thus i must be done before june, so as to have enaught time to prepare exams.
 	- based on CCEAT:
 		- create script program hello world
 		- create script program that takes user parameters
-	- learn Makefile
-	- alter the code
-	- run with remote hosts
+		- learn Makefile
+		- alter the code
+		- run with remote hosts
 
 2 research: until 16 April
 
