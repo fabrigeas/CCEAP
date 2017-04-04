@@ -13,7 +13,7 @@ Thus i must be done before june, so as to have enaught time to prepare exams.
 1 familiarize with test CCEAP:(1 week until 9 April)
 
 	- test CCEAT
-	-based on CCEAT:
+	- based on CCEAT:
 		- create script program hello world
 		- create script program that takes user parameters
 	- learn Makefile
