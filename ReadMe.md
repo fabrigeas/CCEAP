@@ -11,6 +11,7 @@ Thus i must be done before june, so as to have enaught time to prepare exams.
 ## Planning
 
 1 familiarize with test CCEAP:(1 week until 9 April)
+
 	- test CCEAT
 		- create script program hello world
 		- create script program that takes user parameters
