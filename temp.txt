@@ -1,0 +1,123 @@
+# To do
+
+- what language i choose java
+	- easily portable
+	-
+- Why do I prefer to use java
+- requirements
+- programming
+- installation and execution
+
+## How to write a portable code with java
+
+-1 Check that Java compiler(javac) and Java Platform are installed
+
+- in terminal /cmd run
+	- javac -version
+	- java -version
+- in case any if the is not installed, 
+
+0 install java compiler(javac) and java sdk
+
+- linux 
+	- sudo apt install default-jdk
+	- sudo apt install default-jre
+
+- windows 
+	- http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html
+	- http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html
+	- add the path to java to Environmental:
+		- C:\Program Files\Java\jdkxxx\bin
+		- C:\Program Files\Java\jrexxx\bin
+
+
+1 Create Main.java class
+
+	public class Main {
+		public static void main(String[] args) {
+			System.out.println("hello world");
+		}
+
+	}
+	
+2 Call the compiler (javac) 
+
+	javac Main.java 
+- this generates Main.class (byte code) which is the class executable by the jvm
+- NB the compiler will create as many .class files i.e. Bytecodes as referenced in The compiled class.
+
+3 Execute the bytecode(program/Main.class) using
+
+	java Main (with/out .class extension)
+	this the prints "hello world" on the shell
+
+4 Summary
+
+- javac will generate as many .class files corresponding to each class that is referenced in the Compiled .java
+- for example the Main.java created Objects of Person.java, javac Main.java will create Main.class, Person.class etc
+- include paths for different packages
+	- unix 
+		- echo "export CLASSPATH=path/to/some/files:path/to/some/other/files/:another/path/to/some/other/files:. " > .cshrc
+		- source .cshrc
+	
+	-windows 
+		- echo "set /p CLASSPATH=path/to/some/files:path/to/some/other/files/:another/path/to/some/other/files:. " > paths.bat
+		- paths.bat //load paths.bat 
+
+5 make
+	- unix
+			JCC = javac
+		JFLAGS = -g
+
+		# make will run the first target(in this case dafault)
+		# but default points to 2 actions (each action is separated by TAB !not SPACE)
+
+		default: import	compile	execute
+
+		import:
+			set /p CLASSPATH=helloPackage\fabrgeas\app\:helloPackage\fabrgeas\apps\:.
+			
+		compile:
+			$(JCC) $(JFLAGS) Main.java
+
+		execute:
+			java Main
+
+		clean:
+			rm -rf *.class helloPackage/fabrgeas/app/*.class helloPackage/fabrgeas/apps/*.class
+	
+	- windows
+		
+
+
+## Install eclipse Windows builder (Build JAVA GUI apps )
+
+1 install the eclipse plugin 
+	- eclipse -> Help -> Install New Software -> paste http://download.eclipse.org/windowbuilder/WB/release/4.6/
+	- after eclips finishes installation and restarts,
+	- create project
+	- create class
+	- right click on class "open with WindowBuilderEditor"
+	- select "design" instead of "source"
+
+
+
+# What Users can do
+
+- create covert channel with following parameters
+	Supported Hiding Patterns
+		Currently, the below listed hiding patterns are supported by CCEAP.
+			Storage Channel Patterns:
+				• Size Modulation
+				• Sequence Modulation		-o
+				• Add Redundancy
+				• Random Value				
+				• Value Modulation			-d int
+				• Reserved/Unused			
+			Timing Channel Patterns:
+				• Artificial Message/Packet Loss (a.k.a. PDU Corruption)
+				• Artificial Retransmission				-p
+				• Manipulated Message Ordering
+				• Inter-arrival Time
+				• Rate/Throughput, indirectly supported via the Interpacket Time Pattern
+	
