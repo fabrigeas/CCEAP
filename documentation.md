@@ -124,13 +124,20 @@ In general the abstract should be the last thing that you write, when you know w
 
 ## Design and Implementation
 
-- Design decisions
-	- The CCEAP-UI tool is written in java programming language
-		Java has been choosen over the variety of other languages because 
-			- it is the most portable language, the system architecture only requires a JVM (Java virzual machine) running in backgound
-			- the JVM, JavaC (java compiler) are relatively easy and simple to install
+	- Design decisions
+		- Initially, the CCEAP-UI tool was written in java programming language. Java has been choosen over the variety of other languages because 
+				- it is the most portable language, the system architecture only requires a JVM (Java virtual machine) running in backgound
+				- the JVM, JavaC (java compiler) are relatively easy and simple to install
+				- Java code(source code) is compiled by the java compiler  independent from the system architecture to produce platform-neutral Java bytecode
+				targeting the Java Virtual Machine, that will take these bytecodes(Java.class files) to produce Machine code to be ran by the architecture.
 	
 	- Programming Requirements
+	
+		- QT creator
+		- GitHub
+		- gcc
+		
+		
 		- javac JRE
 		- java  JDK
 		- Eclipse
@@ -167,9 +174,20 @@ In general the abstract should be the last thing that you write, when you know w
 	- sketches
 	- wire frames
 	- mock-ups
+	
+	CCEAP GUI is developped with QT creator, because it appears to be the best alternative to develop such a GUI program, because
+	UI Cotrols are easily placed on th window container as compared to the java alternative.
+	This is because QT creator allows drag and drop of UI Controls on desired positions of the caontainer(Window), as compared to java
+	where containers are constraint in Layouts, for example a Border layout only allows a ui control to be placed at the left of the previous 
+	pcontrols. 
+	...
+	....
 
 
 	- My remark about the implementation
+		Despite all the planning that I went through, i have come to learn that, practice is a different topic from theory.
+		
+		
 	- Problems encountered during the implementation
 	- Good Things about the tool
 	- Drawbacks/bad about the tool
