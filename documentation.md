@@ -144,12 +144,17 @@ In general the abstract should be the last thing that you write, when you know w
 	- Discussion
 	
 	- Problems encoutered
-		It is extremely dificult to use javas SWING and AWT classes as means of developing User Interface programs.
+		- It is extremely dificult to use javas SWING and AWT classes as means of developing User Interface programs.
 		This is because, althow java offers these classes, these elements are limited in the way they can be used.
 		These classes are appropriate for UI such as calculator, video player, etc where a.
 		
 			For the CCEAP, the available containers apply useles because some items need absolute positioning on well defined coordinates,
 		whereals AWT and SWING containers only offer Border layout and flow layouts.
+		
+		- Executing an application from QT.
+		I have stayed on deathlock for more than a week trying to run the server and client program from QT using the read parameters, 
+		each of the approaches that I used didnt work and each time I ran the program nothing noticeable happened, at best when i closed the program,
+		a debug message said , client program started and is still running althau my gui app is closed.
 		
 	- Solutions to encountered problems
 		Faced with this problem, I was forced to abandon java and search an alternative solution, thus QT appeard the next best solution 
