@@ -192,6 +192,38 @@ In general the abstract should be the last thing that you write, when you know w
 	- Good Things about the tool
 	- Drawbacks/bad about the tool
 
+
+	Deploying the app to windows
+	[Deploy an Application on Windows](http://wiki.qt.io/Deploy_an_Application_on_Windows)
+	
+	requirements
+	
+		- The release version of your app works correctly when you build + run it from Qt Creator
+		- Qt is installed in C:\Qt\5.2.1\mingw48_32\
+		- This also applies to 
+			- Qt 5.6 and mingw49_32
+	
+	Steps (Hard Code)
+	
+		1. Close Qt Creator.
+		2. Create a folder to hold the app eg ~\MyApp\
+		3. cp \QT\Projects\MýApp\MyApp.exe ~\MyApp\
+		4. cp C:\Qt\5.2.1\mingw48_32\bin\*.dll ~\MyApp\
+		5. cp from C:\Qt\5.2.1\mingw48_32\plugins\* ~\MyApp\
+		6. cp C:\Qt\5.2.1\mingw48_32\qml\* ~\MyApp\
+		7. Test if deployment worked
+			1. mv (rename) C:\Qt C:\QtHidden\ (This turns your PC into a clean environment, just like one that doesn't have Qt installed).
+			2. ~\MyApp\\MyApp.exe
+			3. if it works then perfect
+		8. Cleanup
+			- start ~\MyApp\MyApp.exe 
+			- while ie running, 
+				-rm ~\MyApp\* and skip eroneous files.(this will delete only unnecessary dll files)
+		9. restart ~\MyApp\MyApp.exe
+			- it it works, then the app can be distributed.
+	
+	Steps (Expert)	
+		
 # Conclusion
 
 - What other features can be added to the tool
