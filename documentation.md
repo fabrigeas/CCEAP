@@ -123,11 +123,9 @@ Writing a good abstract is difficult, since it should only include the most impo
 		-D is the ip address of the computer where the server is running, if you are running the client and server on different computers, 
 		you need to replace the 127.0.0.1 with the actua address of the computer where the server is running.
 	
-	- Visit the CCEAP website for more detailes about the parameters and explanations[User CCEAP command Line tool](https://github.com/cdpxe/CCEAP)
+	- Visit the CCEAP website for more detailes about the parameters and explanations [User CCEAP command Line tool](https://github.com/cdpxe/CCEAP/tree/master/documentation)
 	
-	
-	[User CCEAP command Line tool](https://github.com/cdpxe/CCEAP)
-		
+
 - Limitations of the CCEAP Tool		
 	- The main limitations of the CCEAP is that it is a Command Line tool:
 		- most people dont know such language
