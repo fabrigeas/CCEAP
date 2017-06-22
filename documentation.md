@@ -306,3 +306,5 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 	[Hidden and Uncontrolled - On the Emergence of Network Steganographic Threats](https://www.researchgate.net/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats).
 	[Hiding patterns](http://ih-patterns.blogspot.de/p/introduction.html) 
 	[CCEAP-Master](https://github.com/cdpxe/CCEAP) 
+	[An Educational Network Protocol for Covert Channel Analysis Using Patterns](http://dl.acm.org/citation.cfm?id=2989037) 
+	[This Thesis](https://github.com/fabrigeas/bachelor-thesis/) 
