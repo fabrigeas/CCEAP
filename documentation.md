@@ -82,6 +82,7 @@ Writing a good abstract is difficult, since it should only include the most impo
 	
 	Given the large number of hiding methods available (more than a Hundred of them), the cceap offers a shortcut to students to understand the core concepts 
 	of network covert channels without any need to understanding network protocols.
+	CCEAP allows learners to model
 	
 	The protocol helps in understanding network covert channels by eliminating the requirement (for students) to understand several network protocols in advance.
 	Additionally, 
@@ -93,9 +94,7 @@ Writing a good abstract is difficult, since it should only include the most impo
 
 	[Hiding patterns](http://ih-patterns.blogspot.de/p/introduction.html) 
 	describe the core ideas of how secret data can be hidden in network transmissions. 
-	While more than hundred hiding methods are known, earlier work by [Steffen Wendzel and Wojciech Mazurczyk.](http://ih-patterns.blogspot.de/p/authorscontact.html) 
-	has shown that these hiding methods can be broken down into only 11 hiding patterns. 
-	By learning these 11  hiding patterns, students automatically understand the core concepts of all known hiding methods.
+	While more than hundred hiding methods are known, earlier work by [Steffen Wendzel and Wojc9l known hiding methods.
 	Being still in an early stage, CCEAP can already be used to create most of the known hiding patterns for network covert channels
 
 		Several papers describe data hiding methods to create network covert channels. However, no work explains the actual process of
@@ -250,7 +249,8 @@ Writing a good abstract is difficult, since it should only include the most impo
 		5. cp from C:\Qt\5.2.1\mingw48_32\plugins\* ~\MyApp\
 		6. cp C:\Qt\5.2.1\mingw48_32\qml\* ~\MyApp\
 		7. Test if deployment worked
-			1. mv (rename) C:\Qt C:\QtHidden\ (This turns your PC into a clean environment, just like one that doesn't have Qt installed).
+			1. mv (rename) C:\Qt C:\QtHidden\ 
+			(This turns your PC into a clean environment, just like one that doesn't have Qt installed).
 			2. ~\MyApp\\MyApp.exe
 			3. if it works then perfect
 		8. Cleanup
