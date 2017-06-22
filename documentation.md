@@ -66,7 +66,8 @@ Feugang Kemegni Fabrice
 
 ## Abstract
 
-In general the abstract should be the last thing that you write, when you know what you have actually written. It is nevertheless a good idea to work on a draft continuously. Writing a good abstract is difficult, since it should only include the most important points of your work. But this is also why working on your abstract can be useful – it forces you to identify exactly what it is you are writing about. 
+In general the abstract should be the last thing that you write, when you know what you have actually written. It is nevertheless a good idea to work on a draft continuously. 
+Writing a good abstract is difficult, since it should only include the most important points of your work. But this is also why working on your abstract can be useful – it forces you to identify exactly what it is you are writing about. 
 
 ## Introduction
 
@@ -104,15 +105,20 @@ In general the abstract should be the last thing that you write, when you know w
 		- most people dont know such language
 		- it is difficult (event for expert) to follow the program floww and outputs on command line
 		- undo and redos are 
+		- the outputs of the tool are not easy to understand and interprete
+		- available parameters are not easily undestandable to non experts
+		-
 
 2 What is my contribution to solve the problem
 
 	Faced with these limitations of the tool, I will attempt to provide a durable solution which includes 
 		- a graphical user interface program
 		- transportable: can run on both windows and Linux
-		- usable program that even the most rookie user will find it easy to use
+		- usable program that even the most rookie user will find easy to use
 		- smart program that hels and guides learners throughout their learning of covert channels and hiding patterns 
 		- users should be able to follow the outputs to their given inputs and understand them
+		- provide easyily understandable and interpretable outputs of the program
+		- provide customizable
 
 ## Related Work
 
@@ -121,7 +127,10 @@ In general the abstract should be the last thing that you write, when you know w
 	- what is already out there
 	- the goal is not to reinvent the wheel, instead 
 	- show other scientific publications
-
+	
+	Cryptography- the practice and study of techniques for secure communications in the presence of adversaries (third parties) is a relatively broad topic and Covert channel
+	being one of its subtopics, is still a relatively is a relative complex topic in computer science, as compared to other topics like cryptography In the demain of coevert cin genaral
+	
 ## Design and Implementation
 
 	- Design decisions
@@ -134,9 +143,23 @@ In general the abstract should be the last thing that you write, when you know w
 	- Programming Requirements
 	
 		- QT creator
-		- GitHub
-		- gcc
+		- Git
+		- gcc, qmake, cmake,...
+		- OS
+			- ubuntu 
+			- windows
 		
+		## Why Qt Creator is a cross-platform C++, JavaScript and QML integrated development environment. 
+		QT creator commes with several useful programming resources including 
+		- a visual debugger
+		- an integrated GUI layout and forms designer. 
+		- syntax highlighting and autocompletion  in editor's features. 
+		- C++ compiler from the GNU Compiler Collection on Linux and FreeBSD. 
+		- On Windows it can:
+			- use MinGW or MSVC
+			- Microsoft Console Debugger (when compiled from source code).
+			- Clang.
+		Due to these features, it became intuitive to choose it as the development tool.
 		
 		- javac JRE
 		- java  JDK
@@ -163,6 +186,14 @@ In general the abstract should be the last thing that you write, when you know w
 		each of the approaches that I used didnt work and each time I ran the program nothing noticeable happened, at best when i closed the program,
 		a debug message said , client program started and is still running althau my gui app is closed.
 		
+		- Deadlock: Server freezes when waiting for data.
+		When the button 'start server' is clickd, after ~ 2 seconds the server GUI freezes waiting for clients connection, 
+		it only unfreezes once a client has connected and completely sent its packets.
+		
+		- Live communication with the CCEAP tools:
+		The GUI-Tools do not communicate in duplex with the CCEAP tools, instead, the client/server gui send its message to the corresponding tool
+		and waits for reply, then closes communication, so it is impossible to receive live stdio/err from the tools.
+		
 	- Solutions to encountered problems
 		Faced with this problem, I was forced to abandon java and search an alternative solution, thus QT appeard the next best solution 
 		due to its portability, as programs written on QT on either architecture, can be easily compiled in another architecture.
@@ -170,18 +201,18 @@ In general the abstract should be the last thing that you write, when you know w
 		With QT, design is relatively simple, items are placed on the container through a simple drag and drop.
 		
 			
-- How is the GUI implemented, descriptions
-	- sketches
-	- wire frames
-	- mock-ups
-	
-	CCEAP GUI is developped with QT creator, because it appears to be the best alternative to develop such a GUI program, because
-	UI Cotrols are easily placed on th window container as compared to the java alternative.
-	This is because QT creator allows drag and drop of UI Controls on desired positions of the caontainer(Window), as compared to java
-	where containers are constraint in Layouts, for example a Border layout only allows a ui control to be placed at the left of the previous 
-	pcontrols. 
-	...
-	....
+	- How is the GUI implemented, descriptions
+		- sketches
+		- wire frames
+		- mock-ups
+		
+		CCEAP GUI is developped with QT creator, because it appears to be the best alternative to develop such a GUI program, because
+		UI Cotrols are easily placed on th window container as compared to the java alternative.
+		This is because QT creator allows drag and drop of UI Controls on desired positions of the caontainer(Window), as compared to java
+		where containers are constraint in Layouts, for example a Border layout only allows a ui control to be placed at the left of the previous 
+		pcontrols. 
+		...
+		....
 
 
 	- My remark about the implementation
@@ -223,7 +254,23 @@ In general the abstract should be the last thing that you write, when you know w
 			- it it works, then the app can be distributed.
 	
 	Steps (Expert)	
+	
+	## What else can be done
+	
+		- CCEAP: currently after starting the client, it doesnt provide any information about the state, it 
+		does
+		--CCEAP server: display server running and waiting for packets from clients
 		
+# Extensions
+
+Features that could be extended to the CCEAP tool
+- Export packet configuration to xml, cvs, oData, JSon etc
+- Import Packet from any of the above file
+- The above for both client and server
+- Live communication between tool and GUI, is GUI starts the tool, reads the hello message from tool
+   then sends its command with parameters, and receives any message from tool that is displayed live to gui.
+- 
+	
 # Conclusion
 
 - What other features can be added to the tool
@@ -236,3 +283,5 @@ In general the abstract should be the last thing that you write, when you know w
 - JDK
 - SDK
 - Eclipse
+
+# References
