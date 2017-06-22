@@ -308,3 +308,4 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 	[CCEAP-Master](https://github.com/cdpxe/CCEAP) 
 	[An Educational Network Protocol for Covert Channel Analysis Using Patterns](http://dl.acm.org/citation.cfm?id=2989037) 
 	[This Thesis](https://github.com/fabrigeas/bachelor-thesis/) 
+	[User CCEAP command Line tool](https://github.com/cdpxe/CCEAP)
