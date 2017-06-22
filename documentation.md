@@ -100,7 +100,8 @@ Writing a good abstract is difficult, since it should only include the most impo
 		Several papers describe data hiding methods to create network covert channels. However, no work explains the actual process of
 	analyzing a network protocol for potential covert channels in the context of recently introduced hiding patterns. 
 	the CCEAP paper fills this gap by providing a pattern-based method for teaching network covert channel analysis with an educational network protocol.
-	[this publication] (https://www.researchgate.net/profile/Steffen_Wendzel/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats/links/53eb38eb0cf2dc24b3cea87a.pdf).
+	[this publication]
+	(https://www.researchgate.net/profile/Steffen_Wendzel/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats/links/53eb38eb0cf2dc24b3cea87a.pdf).
 
 - How does CCEAP function?
 
@@ -327,7 +328,7 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 - CCEAP Covert Channel Educational Analysis Protocol
 - UI User Interface
 
-# References
+# Bibliography
 
 	refs
 	[this publication](https://www.researchgate.net/profile/Steffen_Wendzel/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats/links/53eb38eb0cf2dc24b3cea87a.pdf).
