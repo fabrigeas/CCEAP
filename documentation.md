@@ -105,6 +105,27 @@ Writing a good abstract is difficult, since it should only include the most impo
 - How does CCEAP function?
 
 	The CCEAP is a command line tool that runs on both windows and Linux.
+	
+	- Windows
+		- open a command line tool cmd
+		- navigate to the folder where the cceap tools are stored
+		  i.e cd /path/to/CCEP/Folder
+		- start Server.exe -P 1234
+		- start client.exe -P 1234 -D 127.0.0.1
+			
+	- Unix
+		- open shell (Termnal)
+		- with the terminal, navigate to folder where CCEAP program is stored
+		- start server ./server -P 1234
+		- start client ./client -p 1234 -D 127.0.0.1
+	
+	- in the example above, -D is the Port number, which must be the same for clien and server,
+		-D is the ip address of the computer where the server is running, if you are running the client and server on different computers, 
+		you need to replace the 127.0.0.1 with the actua address of the computer where the server is running.
+	
+	- Visit the CCEAP website for more detailes about the parameters and explanations[User CCEAP command Line tool](https://github.com/cdpxe/CCEAP)
+	
+	
 	[User CCEAP command Line tool](https://github.com/cdpxe/CCEAP)
 		
 - Limitations of the CCEAP Tool		
@@ -284,20 +305,29 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 	- The above for both client and server
 	- Live communication between tool and GUI, is GUI starts the tool, reads the hello message from tool
 	- then sends its command with parameters, and receives any message from tool that is displayed live to gui.
-
+	- Testing: The program has not been extensively thus further testing should be carried out before building upon.
 	
 # Conclusion
 
 - What other features can be added to the tool
 - What features should not be added
 - Open tasks to the GUI
-
+	
+	I would like to emphasize on the fact that the application developped in this project is only for an academic purpose, a lightweigh GUI-tool
+	with the sole purpose of providing a User Interface to the already existing command line CCEAP program.
+	This program has not been extensively been tested, due to the fact that there is no immediate need for testing, as the development will be continued by 
+	other students like me, who should focus on testing before building from my foundations.
+	
+		Developing this application has provided me the opportunity to carry out some amount of academic research , 
+	
 # Abbreviations
 
-- JRE 
-- JDK
-- SDK
-- Eclipse
+- JRE Java Runtime Environment
+- JDK Java Development Kit
+- SDK Software Development Kit
+- IDE Integrated Development Environment
+- CCEAP Covert Channel Educational Analysis Protocol
+- UI User Interface
 
 # References
 
