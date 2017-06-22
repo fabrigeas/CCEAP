@@ -75,8 +75,14 @@ Writing a good abstract is difficult, since it should only include the most impo
 
 - What is CCEAP and What is it for (The Core Idea)
 
-		CCEAP(Covert Channel Educational Analysis Protocol) is a network protocol designed for teaching covert channels.
-	It is an application layer protocol that is embedded into the TCP payload (which is explicitly vulnerable against several hiding patterns).
+		CCEAP(Covert Channel Educational Analysis Protocol) is a commandline tool(program) developped by Pr Steffen Wenzel-
+	as network protocol designed for teaching covert channels.
+	
+	It is an application layer protocol that uses Ethernet packets payloads as covert channel because the latter is explicitly vulnerable to several hiding patterns.
+	
+	Given the large number of hiding methods available (more than a Hundred of them), the cceap offers a shortcut to students to understand the core concepts 
+	of network covert channels without any need to understanding network protocols.
+	
 	The protocol helps in understanding network covert channels by eliminating the requirement (for students) to understand several network protocols in advance.
 	Additionally, 
 	the traditional number of hiding methods (more than a hundred of them) that students need to understand to capture the full spectrum of hiding methods is summarized(into 14 only).
@@ -85,8 +91,10 @@ Writing a good abstract is difficult, since it should only include the most impo
 
 - What are Hiding Patterns?
 
-		[Hiding patterns](http://ih-patterns.blogspot.de/p/introduction.html)(also known as hiding technique) describe the core ideas of how secret data can be hidden in network transmissions. 
-	While more than hundred hiding methods are known, earlier work by [Steffen Wendzel and Wojciech Mazurczyk.](http://ih-patterns.blogspot.de/p/authorscontact.html) has shown that these hiding methods can be broken down into only 11 hiding patterns. 
+	[Hiding patterns](http://ih-patterns.blogspot.de/p/introduction.html) 
+	describe the core ideas of how secret data can be hidden in network transmissions. 
+	While more than hundred hiding methods are known, earlier work by [Steffen Wendzel and Wojciech Mazurczyk.](http://ih-patterns.blogspot.de/p/authorscontact.html) 
+	has shown that these hiding methods can be broken down into only 11 hiding patterns. 
 	By learning these 11  hiding patterns, students automatically understand the core concepts of all known hiding methods.
 	Being still in an early stage, CCEAP can already be used to create most of the known hiding patterns for network covert channels
 
@@ -132,13 +140,6 @@ Writing a good abstract is difficult, since it should only include the most impo
 	being one of its subtopics, is still a relatively is a relative complex topic in computer science, as compared to other topics like cryptography In the demain of coevert cin genaral
 	
 ## Design and Implementation
-
-	- Design decisions
-		- Initially, the CCEAP-UI tool was written in java programming language. Java has been choosen over the variety of other languages because 
-				- it is the most portable language, the system architecture only requires a JVM (Java virtual machine) running in backgound
-				- the JVM, JavaC (java compiler) are relatively easy and simple to install
-				- Java code(source code) is compiled by the java compiler  independent from the system architecture to produce platform-neutral Java bytecode
-				targeting the Java Virtual Machine, that will take these bytecodes(Java.class files) to produce Machine code to be ran by the architecture.
 	
 	- Programming Requirements
 	
@@ -160,7 +161,13 @@ Writing a good abstract is difficult, since it should only include the most impo
 			- Microsoft Console Debugger (when compiled from source code).
 			- Clang.
 		Due to these features, it became intuitive to choose it as the development tool.
-		
+
+	- Design decisions
+		- Initially, the CCEAP-UI tool was written in java programming language. Java has been choosen over the variety of other languages because 
+			- it is the most portable language, the system architecture only requires a JVM (Java virtual machine) running in backgound
+			- the JVM, JavaC (java compiler) are relatively easy and simple to install
+			- Java code(source code) is compiled by the java compiler  independent from the system architecture to produce platform-neutral Java bytecode
+			targeting the Java Virtual Machine, that will take these bytecodes(Java.class files) to produce Machine code to be ran by the architecture.		
 		- javac JRE
 		- java  JDK
 		- Eclipse
@@ -261,15 +268,23 @@ Writing a good abstract is difficult, since it should only include the most impo
 		does
 		--CCEAP server: display server running and waiting for packets from clients
 		
+		
+		
 # Extensions
 
-Features that could be extended to the CCEAP tool
-- Export packet configuration to xml, cvs, oData, JSon etc
-- Import Packet from any of the above file
-- The above for both client and server
-- Live communication between tool and GUI, is GUI starts the tool, reads the hello message from tool
-   then sends its command with parameters, and receives any message from tool that is displayed live to gui.
-- 
+The Gui tool developped for this purpose is somewhat limiited to basic functionalites, that will proviide a simple graphical 
+reprosentation of the commandline displays of the CCEAP-tool.
+To this tool could be several features extended. The list below provides some features that could be added to the tool during further
+developments and versions, as mentioned in the introduction of the document, my part of the solution was to provide a basic user interface
+to interact with the CCEAP command line tool, so as to enable novice users to be able to use the CCEAP tool when learning overt channels.
+
+- Features that could be added to the CCEAP-Gui tool
+	- Export packet configuration to xml, cvs, oData, JSon etc
+	- Import Packet from any of the above file
+	- The above for both client and server
+	- Live communication between tool and GUI, is GUI starts the tool, reads the hello message from tool
+	- then sends its command with parameters, and receives any message from tool that is displayed live to gui.
+
 	
 # Conclusion
 
