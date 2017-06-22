@@ -305,3 +305,4 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 	[this publication](https://www.researchgate.net/profile/Steffen_Wendzel/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats/links/53eb38eb0cf2dc24b3cea87a.pdf).
 	[Hidden and Uncontrolled - On the Emergence of Network Steganographic Threats](https://www.researchgate.net/publication/263773592_Hidden_and_Uncontrolled_-_On_the_Emergence_of_Network_Steganographic_Threats).
 	[Hiding patterns](http://ih-patterns.blogspot.de/p/introduction.html) 
+	[CCEAP-Master](https://github.com/cdpxe/CCEAP) 
