@@ -299,6 +299,7 @@ developments and versions, as mentioned in the introduction of the document, my 
 to interact with the CCEAP command line tool, so as to enable novice users to be able to use the CCEAP tool when learning overt channels.
 
 - Features that could be added to the CCEAP-Gui tool
+
 	- Export packet configuration to xml, cvs, oData, JSon etc
 	- Import Packet from any of the above file
 	- The above for both client and server
@@ -307,26 +308,39 @@ to interact with the CCEAP command line tool, so as to enable novice users to be
 	- Testing: The program has not been extensively thus further testing should be carried out before building upon.
 	
 # Conclusion
-
-- What other features can be added to the tool
-- What features should not be added
-- Open tasks to the GUI
 	
+	The aim of my thesis has been to implement a GUI (Graphocal User Interface) program as a tool for the existing CCEAP tool.
+	The importance of this work lies not only on the program, but also on the application of the concepts that i have acquired 
+	during my undergraduate studies
 	I would like to emphasize on the fact that the application developped in this project is only for an academic purpose, a lightweigh GUI-tool
 	with the sole purpose of providing a User Interface to the already existing command line CCEAP program.
 	This program has not been extensively been tested, due to the fact that there is no immediate need for testing, as the development will be continued by 
 	other students like me, who should focus on testing before building from my foundations.
 	
-		Developing this application has provided me the opportunity to carry out some amount of academic research , 
+		Developing this application has provided me the opportunity to carry out some amount of academic research .
+	During this development, I have come accross several diffultioés and problems, but with some efforts i have been able to overcome them or find away around.
+	
+	In the Chapter Reated works, i describe some related works, projets and tools that till now provided alternative solutions to the problem that i solved in 
+	this project.
+	
+	In the chapter Implementation, i try to describe the steps that i took in implementing the app. I also attach the Git repository where the project is 
+	hosted, with a detailed git log, that could be followed to understand the historic of the development.
+	
+	In the section 'problems encountered, i list some of the dificultes that I encountered followed by my solutions and some advices to other pogrammers 
+	that may come accorss similar problems.
+	
+	The chapter extensions describe a list of tasks and features that students that will continue the development of CCEAP should first implement so as to keep 
+	a the program robust.
 	
 # Abbreviations
 
-- JRE Java Runtime Environment
-- JDK Java Development Kit
-- SDK Software Development Kit
-- IDE Integrated Development Environment
-- CCEAP Covert Channel Educational Analysis Protocol
-- UI User Interface
+- JRE-Java Runtime Environment
+- JDK-Java Development Kit
+- SDK-Software Development Kit
+- IDE-Integrated Development Environment
+- CCEAP-Covert Channel Educational Analysis Protocol
+- U-User Interface
+- GUI-Graphical User Interface
 
 # Bibliography
 
