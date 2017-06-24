@@ -76,7 +76,7 @@ Writing a good abstract is difficult, since it should only include the most impo
 - What is CCEAP and What is it for (The Core Idea)
 
 		CCEAP(Covert Channel Educational Analysis Protocol) is a commandline tool(program) developped by Pr Steffen Wenzel-
-	as network protocol designed for teaching covert channels.
+	as a network protocol designed to healp in teaching covert channels.
 	
 	It is an application layer protocol that uses Ethernet packets payloads as covert channel because the latter is explicitly vulnerable to several hiding patterns.
 	
