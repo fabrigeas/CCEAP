@@ -49,7 +49,8 @@ ServerGui::~ServerGui()
 //This is the handle for the button 'start server'.
 void ServerGui::on_startServerButton_clicked()
 {
-
+    //clear display
+    stringList.clear();
 
     /*This handler instantiates the server thread.
      * and registers a handler so that the serveThread can then emit a signal back to the
@@ -80,7 +81,7 @@ be placed on the ListView.*/
 //This slot is called automatically when the serverThread emits its signal
 void ServerGui::dataReceivedFromServer(QStringList list)
 {
-    stringList.clear();
+
 
     /*The stringList returned by the thread is already formated,
      * so this gui only needs to display it in its listview.
