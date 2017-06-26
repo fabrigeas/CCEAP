@@ -14,12 +14,12 @@ class ServerThread : public QThread
 {
     Q_OBJECT
     public:
-        //explicit MyThread(Ui::CCEAP *ui,QStringListModel *m);
-        explicit ServerThread(QString port);
+        explicit ServerThread(QString);
         void run();
+        QString validatePortNumber(QString);
 
     signals:
-        void signal(QStringList stringList);
+        void signal(QStringList);
 
     private:
         Ui::CCEAP *uui;

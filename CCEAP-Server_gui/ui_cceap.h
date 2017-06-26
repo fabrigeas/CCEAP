@@ -35,6 +35,8 @@ public:
     QAction *actionImport;
     QAction *actionExport;
     QAction *actionClose;
+    QAction *actionAbout_CCEAP;
+    QAction *actionDeveloper;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
     QFrame *frame;
@@ -62,6 +64,10 @@ public:
         actionExport->setObjectName(QStringLiteral("actionExport"));
         actionClose = new QAction(CCEAP);
         actionClose->setObjectName(QStringLiteral("actionClose"));
+        actionAbout_CCEAP = new QAction(CCEAP);
+        actionAbout_CCEAP->setObjectName(QStringLiteral("actionAbout_CCEAP"));
+        actionDeveloper = new QAction(CCEAP);
+        actionDeveloper->setObjectName(QStringLiteral("actionDeveloper"));
         centralWidget = new QWidget(CCEAP);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
@@ -134,6 +140,8 @@ public:
         menuFile->addAction(actionImport);
         menuFile->addAction(actionExport);
         menuFile->addAction(actionClose);
+        menuHelp->addAction(actionAbout_CCEAP);
+        menuHelp->addAction(actionDeveloper);
 
         retranslateUi(CCEAP);
 
@@ -146,6 +154,8 @@ public:
         actionImport->setText(QApplication::translate("CCEAP", "Import", 0));
         actionExport->setText(QApplication::translate("CCEAP", "Export", 0));
         actionClose->setText(QApplication::translate("CCEAP", "Exit", 0));
+        actionAbout_CCEAP->setText(QApplication::translate("CCEAP", "about CCEAP", 0));
+        actionDeveloper->setText(QApplication::translate("CCEAP", "developer", 0));
 #ifndef QT_NO_TOOLTIP
         ip_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>If runnung both client and server on the same computer, use</p><p>127.0.0.1 for servers ip</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP

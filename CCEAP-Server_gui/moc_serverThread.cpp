@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ServerThread_t {
-    QByteArrayData data[4];
-    char stringdata0[32];
+    QByteArrayData data[3];
+    char stringdata0[21];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -31,11 +31,10 @@ static const qt_meta_stringdata_ServerThread_t qt_meta_stringdata_ServerThread =
     {
 QT_MOC_LITERAL(0, 0, 12), // "ServerThread"
 QT_MOC_LITERAL(1, 13, 6), // "signal"
-QT_MOC_LITERAL(2, 20, 0), // ""
-QT_MOC_LITERAL(3, 21, 10) // "stringList"
+QT_MOC_LITERAL(2, 20, 0) // ""
 
     },
-    "ServerThread\0signal\0\0stringList"
+    "ServerThread\0signal\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +55,7 @@ static const uint qt_meta_data_ServerThread[] = {
        1,    1,   19,    2, 0x06 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QStringList,    3,
+    QMetaType::Void, QMetaType::QStringList,    2,
 
        0        // eod
 };

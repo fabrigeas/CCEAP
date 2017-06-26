@@ -116,6 +116,8 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionAbout_CCEAP"/>
+    <addaction name="actionDeveloper"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -143,6 +145,16 @@
   <action name="actionClose">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout_CCEAP">
+   <property name="text">
+    <string>about CCEAP</string>
+   </property>
+  </action>
+  <action name="actionDeveloper">
+   <property name="text">
+    <string>developer</string>
    </property>
   </action>
  </widget>
