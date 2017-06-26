@@ -1,0 +1,15 @@
+0000000000000000000000000000000000000000 1ec2039a565ca662dd37b0f6b6ae9e6e22ce5b3d Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1493287568 +0200	commit (initial): init
+1ec2039a565ca662dd37b0f6b6ae9e6e22ce5b3d 11b0cb248244e2d3010361025bfb15e94ee1ff5b Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1493289509 +0200	commit: create basic controls
+11b0cb248244e2d3010361025bfb15e94ee1ff5b 8a218e518450dd6c75c2a6f63c524ec5d6bb3946 Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1493290785 +0200	commit: saving state
+8a218e518450dd6c75c2a6f63c524ec5d6bb3946 ee12969b56fde8bdeb0c8ea052ad0273488b32b9 Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1495458556 +0200	commit: save
+ee12969b56fde8bdeb0c8ea052ad0273488b32b9 d1630750299dde2bf0be8cea4d07c33f17cfbf53 Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1495461280 +0200	commit: more commands added
+d1630750299dde2bf0be8cea4d07c33f17cfbf53 ed486207f824593387b8e260a820a18e64afb0fe Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1495463350 +0200	commit: register event handler for button
+ed486207f824593387b8e260a820a18e64afb0fe 9d87b03bbb54caa74dca53b7862239c2f1e461e1 Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1495466315 +0200	commit: more controls, parameter names
+9d87b03bbb54caa74dca53b7862239c2f1e461e1 ae0e743ae783b7dc33671dfa300ac1541dffff7e Fabrice Feugang Kemegni <fabrigeas@gmail.com> 1495467285 +0200	commit: tested listview and QMap iterator to display parameters
+ae0e743ae783b7dc33671dfa300ac1541dffff7e c00d152729751ab2d513fc8939e1390d20248a2e fabrigeas <fabrigeas@gmail.com> 1497288649 +0200	commit: display stdout and sterr to listview
+c00d152729751ab2d513fc8939e1390d20248a2e 3a0e071ae981062335cf59e858485069da8ea680 fabrigeas <fabrigeas@gmail.com> 1497291262 +0200	commit: display command before executing
+3a0e071ae981062335cf59e858485069da8ea680 fdb4f7201bdba02410093b1e2c7482dabb309d9e fabrigeas <fabrigeas@gmail.com> 1497329585 +0200	commit: scroll to bottom,
+fdb4f7201bdba02410093b1e2c7482dabb309d9e b8fc42a9caa79a80c7ca72a95080afc69493d747 fabrigeas <fabrigeas@gmail.com> 1498348089 +0200	commit: combobox to read sequence number parameters
+b8fc42a9caa79a80c7ca72a95080afc69493d747 66035c38f372cd6f98d4e2d95f6c240d1fc95801 fabrigeas <fabrigeas@gmail.com> 1498353331 +0200	commit: format clients program output
+66035c38f372cd6f98d4e2d95f6c240d1fc95801 9a21e4ed6fab54cd4e71e236d8d879fd3f3bf7a6 fabrigeas <fabrigeas@gmail.com> 1498369688 +0200	commit: thread emits signal to counter class
+9a21e4ed6fab54cd4e71e236d8d879fd3f3bf7a6 3f9ccd3c3fd5835dee8765406abeb73085a2f101 fabrigeas <fabrigeas@gmail.com> 1498373553 +0200	commit: successful communication between thread and gui
