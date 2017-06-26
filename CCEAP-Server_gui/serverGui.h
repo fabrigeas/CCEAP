@@ -7,13 +7,13 @@
 
 namespace Ui {class CCEAP;}
 
-class CCEAP : public QMainWindow
+class ServerGui : public QMainWindow
 {
     Q_OBJECT
 
     public:
-        explicit CCEAP(QWidget *parent = 0);
-        ~CCEAP();
+        explicit ServerGui(QWidget *parent = 0);
+        ~ServerGui();
         QString getLocalIP();
 
 

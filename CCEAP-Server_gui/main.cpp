@@ -1,4 +1,4 @@
-#include "cceap.h"
+#include "serverGui.h"
 #include <QApplication>
 
 
@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication application(argc, argv);
-    CCEAP serverGui;
+    ServerGui serverGui;
     serverGui.show();
 
     return application.exec();

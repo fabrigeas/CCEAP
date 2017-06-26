@@ -49,14 +49,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		cceap.cpp \
-		serverThread.cpp moc_cceap.cpp \
-		moc_serverThread.cpp
+		serverThread.cpp \
+		serverGui.cpp moc_serverThread.cpp \
+		moc_serverGui.cpp
 OBJECTS       = main.o \
-		cceap.o \
 		serverThread.o \
-		moc_cceap.o \
-		moc_serverThread.o
+		serverGui.o \
+		moc_serverThread.o \
+		moc_serverGui.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -113,10 +113,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		CCEAP-Server.pro cceap.h \
-		serverThread.h main.cpp \
-		cceap.cpp \
-		serverThread.cpp
+		CCEAP-Server.pro serverThread.h \
+		serverGui.h main.cpp \
+		serverThread.cpp \
+		serverGui.cpp
 QMAKE_TARGET  = CCEAP-Server
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = CCEAP-Server
@@ -284,8 +284,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents cceap.h serverThread.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp cceap.cpp serverThread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents serverThread.h serverGui.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp serverThread.cpp serverGui.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents cceap.ui $(DISTDIR)/
 
 
@@ -309,14 +309,14 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_cceap.cpp moc_serverThread.cpp
+compiler_moc_header_make_all: moc_serverThread.cpp moc_serverGui.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_cceap.cpp moc_serverThread.cpp
-moc_cceap.cpp: cceap.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Server_gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include cceap.h -o moc_cceap.cpp
-
+	-$(DEL_FILE) moc_serverThread.cpp moc_serverGui.cpp
 moc_serverThread.cpp: serverThread.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Server_gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include serverThread.h -o moc_serverThread.cpp
+
+moc_serverGui.cpp: serverGui.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Server_gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include serverGui.h -o moc_serverGui.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -336,24 +336,24 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: main.cpp cceap.h
+main.o: main.cpp serverGui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-cceap.o: cceap.cpp cceap.h \
-		ui_cceap.h \
-		serverThread.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cceap.o cceap.cpp
-
 serverThread.o: serverThread.cpp serverThread.h \
-		cceap.h \
+		serverGui.h \
 		ui_cceap.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serverThread.o serverThread.cpp
 
-moc_cceap.o: moc_cceap.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_cceap.o moc_cceap.cpp
+serverGui.o: serverGui.cpp serverGui.h \
+		ui_cceap.h \
+		serverThread.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serverGui.o serverGui.cpp
 
 moc_serverThread.o: moc_serverThread.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serverThread.o moc_serverThread.cpp
+
+moc_serverGui.o: moc_serverGui.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serverGui.o moc_serverGui.cpp
 
 ####### Install
 

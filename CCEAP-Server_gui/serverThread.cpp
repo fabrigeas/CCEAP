@@ -5,7 +5,7 @@
 #include <QProcess>
 #include <QDebug>
 
-#include "cceap.h"
+#include "serverGui.h"
 #include "ui_cceap.h"
 
 

@@ -14,10 +14,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        cceap.cpp \
-    serverThread.cpp
+    serverThread.cpp \
+    serverGui.cpp
 
-HEADERS  += cceap.h \
-    serverThread.h
+HEADERS  += \
+    serverThread.h \
+    serverGui.h
 
 FORMS    += cceap.ui

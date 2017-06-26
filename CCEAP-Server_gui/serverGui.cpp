@@ -1,4 +1,4 @@
-#include "cceap.h"
+#include "serverGui.h"
 #include "ui_cceap.h"
 #include "serverThread.h"
 
@@ -9,7 +9,7 @@
 
 
 
-CCEAP::CCEAP(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
+ServerGui::ServerGui(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
 {
 
     //inig the GUI
@@ -41,15 +41,14 @@ CCEAP::CCEAP(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
 
 }
 
-CCEAP::~CCEAP()
+ServerGui::~ServerGui()
 {
     delete ui;
 }
 
 //This is the handle for the button 'start server'.
-void CCEAP::on_startServerButton_clicked()
+void ServerGui::on_startServerButton_clicked()
 {
-
 
 
     /*This handler instantiates the server thread.
@@ -79,8 +78,10 @@ be placed on the ListView.*/
 }
 
 //This slot is called automatically when the serverThread emits its signal
-void CCEAP::dataReceivedFromServer(QStringList list)
+void ServerGui::dataReceivedFromServer(QStringList list)
 {
+    stringList.clear();
+
     /*The stringList returned by the thread is already formated,
      * so this gui only needs to display it in its listview.
      *
@@ -92,7 +93,7 @@ void CCEAP::dataReceivedFromServer(QStringList list)
 }
 
 //This returns the ip address to display to user so that they can connect with
-QString CCEAP::getLocalIP(){
+QString ServerGui::getLocalIP(){
     foreach (const QHostAddress &address, QNetworkInterface::allAddresses())
         if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost))
              return address.toString();
