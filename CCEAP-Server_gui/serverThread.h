@@ -10,12 +10,12 @@
 
 namespace Ui {class CCEAP;}
 
-class MyThread : public QThread
+class ServerThread : public QThread
 {
     Q_OBJECT
     public:
         //explicit MyThread(Ui::CCEAP *ui,QStringListModel *m);
-        explicit MyThread(QString port);
+        explicit ServerThread(QString port);
         void run();
 
     signals:

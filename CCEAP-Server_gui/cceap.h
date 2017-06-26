@@ -14,6 +14,7 @@ class CCEAP : public QMainWindow
     public:
         explicit CCEAP(QWidget *parent = 0);
         ~CCEAP();
+        QString getLocalIP();
 
 
     public slots:
@@ -25,10 +26,11 @@ class CCEAP : public QMainWindow
         void signal(int newValue);
 
 
-    public:
+    private:
         Ui::CCEAP *ui;
         QStringListModel *model;
         QStringList stringList;
+
 
 
 };

@@ -78,6 +78,7 @@ public:
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         ip_lineEdit = new QLineEdit(frame);
         ip_lineEdit->setObjectName(QStringLiteral("ip_lineEdit"));
+        ip_lineEdit->setEnabled(false);
 
         horizontalLayout_2->addWidget(ip_lineEdit);
 
@@ -145,8 +146,13 @@ public:
         actionImport->setText(QApplication::translate("CCEAP", "Import", 0));
         actionExport->setText(QApplication::translate("CCEAP", "Export", 0));
         actionClose->setText(QApplication::translate("CCEAP", "Exit", 0));
-        ip_lineEdit->setText(QApplication::translate("CCEAP", "127.0.0.1", 0));
-        port_lineEdit->setText(QApplication::translate("CCEAP", "1234", 0));
+#ifndef QT_NO_TOOLTIP
+        ip_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>If runnung both client and server on the same computer, use</p><p>127.0.0.1 for servers ip</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
+        ip_lineEdit->setText(QString());
+        ip_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "default is: 127.0.0.1", 0));
+        port_lineEdit->setText(QString());
+        port_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "default port is 4444", 0));
         startServerButton->setText(QApplication::translate("CCEAP", "start server", 0));
         menuFile->setTitle(QApplication::translate("CCEAP", "File", 0));
         menuEdit->setTitle(QApplication::translate("CCEAP", "Edit", 0));

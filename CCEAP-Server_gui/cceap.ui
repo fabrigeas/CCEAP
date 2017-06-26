@@ -32,15 +32,27 @@
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
         <widget class="QLineEdit" name="ip_lineEdit">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If runnung both client and server on the same computer, use&lt;/p&gt;&lt;p&gt;127.0.0.1 for servers ip&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
-          <string>127.0.0.1</string>
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>default is: 127.0.0.1</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QLineEdit" name="port_lineEdit">
          <property name="text">
-          <string>1234</string>
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>default port is 4444</string>
          </property>
         </widget>
        </item>

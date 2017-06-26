@@ -2,12 +2,12 @@
 #include <QApplication>
 
 
-
+/*The app's entry point simply starts the server-gui*/
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    CCEAP w;
-    w.show();
+    QApplication application(argc, argv);
+    CCEAP serverGui;
+    serverGui.show();
 
-    return a.exec();
+    return application.exec();
 }

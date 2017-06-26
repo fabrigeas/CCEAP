@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64
+INCPATH       = -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,10 +33,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = CCEAP-Server1.0.0
-DISTDIR = /home/fabrigeas/CCEAP-Server/.tmp/CCEAP-Server1.0.0
+DISTDIR = /home/fabrigeas/bachelor-thesis/CCEAP-Server_gui/.tmp/CCEAP-Server1.0.0
 LINK          = g++
 LFLAGS        = -m64
-LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -50,13 +50,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		cceap.cpp \
-		mythread.cpp moc_cceap.cpp \
-		moc_mythread.cpp
+		serverThread.cpp moc_cceap.cpp \
+		moc_serverThread.cpp
 OBJECTS       = main.o \
 		cceap.o \
-		mythread.o \
+		serverThread.o \
 		moc_cceap.o \
-		moc_mythread.o
+		moc_serverThread.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -114,9 +114,9 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		CCEAP-Server.pro cceap.h \
-		mythread.h main.cpp \
+		serverThread.h main.cpp \
 		cceap.cpp \
-		mythread.cpp
+		serverThread.cpp
 QMAKE_TARGET  = CCEAP-Server
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = CCEAP-Server
@@ -206,6 +206,7 @@ Makefile: CCEAP-Server.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 		CCEAP-Server.pro \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
+		/usr/lib/x86_64-linux-gnu/libQt5Network.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
 	$(QMAKE) -spec linux-g++-64 CONFIG+=debug -o Makefile CCEAP-Server.pro
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
@@ -267,6 +268,7 @@ Makefile: CCEAP-Server.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 CCEAP-Server.pro:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
+/usr/lib/x86_64-linux-gnu/libQt5Network.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++-64 CONFIG+=debug -o Makefile CCEAP-Server.pro
@@ -282,8 +284,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents cceap.h mythread.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp cceap.cpp mythread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents cceap.h serverThread.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp cceap.cpp serverThread.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents cceap.ui $(DISTDIR)/
 
 
@@ -307,14 +309,14 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_cceap.cpp moc_mythread.cpp
+compiler_moc_header_make_all: moc_cceap.cpp moc_serverThread.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_cceap.cpp moc_mythread.cpp
+	-$(DEL_FILE) moc_cceap.cpp moc_serverThread.cpp
 moc_cceap.cpp: cceap.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/CCEAP-Server -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include cceap.h -o moc_cceap.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Server_gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include cceap.h -o moc_cceap.cpp
 
-moc_mythread.cpp: mythread.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/CCEAP-Server -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mythread.h -o moc_mythread.cpp
+moc_serverThread.cpp: serverThread.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Server_gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include serverThread.h -o moc_serverThread.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -339,19 +341,19 @@ main.o: main.cpp cceap.h
 
 cceap.o: cceap.cpp cceap.h \
 		ui_cceap.h \
-		mythread.h
+		serverThread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cceap.o cceap.cpp
 
-mythread.o: mythread.cpp mythread.h \
+serverThread.o: serverThread.cpp serverThread.h \
 		cceap.h \
 		ui_cceap.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mythread.o mythread.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serverThread.o serverThread.cpp
 
 moc_cceap.o: moc_cceap.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_cceap.o moc_cceap.cpp
 
-moc_mythread.o: moc_mythread.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mythread.o moc_mythread.cpp
+moc_serverThread.o: moc_serverThread.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serverThread.o moc_serverThread.cpp
 
 ####### Install
 
