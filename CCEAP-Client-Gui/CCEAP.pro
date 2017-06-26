@@ -12,9 +12,10 @@ TARGET = CCEAP
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        cceap.cpp
+SOURCES += main.cpp \
+    clientGui.cpp
 
-HEADERS  += cceap.h
+HEADERS  += \
+    clientGui.h
 
 FORMS    += cceap.ui

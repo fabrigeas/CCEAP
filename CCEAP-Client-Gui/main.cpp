@@ -1,4 +1,4 @@
-#include "cceap.h"
+#include "clientGui.h"
 #include <QApplication>
 #include <QProcess>
 #include <QDebug>
@@ -6,7 +6,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    CCEAP w;
+    ClientGui w;
 
 
     w.show();

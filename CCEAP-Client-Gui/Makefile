@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = CCEAP1.0.0
-DISTDIR = /home/fabrigeas/CCEAP/.tmp/CCEAP1.0.0
+DISTDIR = /home/fabrigeas/bachelor-thesis/CCEAP-Client-Gui/.tmp/CCEAP1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -49,10 +49,10 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		cceap.cpp moc_cceap.cpp
+		clientGui.cpp moc_clientGui.cpp
 OBJECTS       = main.o \
-		cceap.o \
-		moc_cceap.o
+		clientGui.o \
+		moc_clientGui.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -109,8 +109,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		CCEAP.pro cceap.h main.cpp \
-		cceap.cpp
+		CCEAP.pro clientGui.h main.cpp \
+		clientGui.cpp
 QMAKE_TARGET  = CCEAP
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = CCEAP
@@ -276,8 +276,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents cceap.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp cceap.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents clientGui.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp clientGui.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents cceap.ui $(DISTDIR)/
 
 
@@ -301,11 +301,11 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_cceap.cpp
+compiler_moc_header_make_all: moc_clientGui.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_cceap.cpp
-moc_cceap.cpp: cceap.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/CCEAP -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include cceap.h -o moc_cceap.cpp
+	-$(DEL_FILE) moc_clientGui.cpp
+moc_clientGui.cpp: clientGui.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/fabrigeas/bachelor-thesis/CCEAP-Client-Gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include clientGui.h -o moc_clientGui.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -325,15 +325,15 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: main.cpp cceap.h
+main.o: main.cpp clientGui.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-cceap.o: cceap.cpp cceap.h \
+clientGui.o: clientGui.cpp clientGui.h \
 		ui_cceap.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cceap.o cceap.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clientGui.o clientGui.cpp
 
-moc_cceap.o: moc_cceap.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_cceap.o moc_cceap.cpp
+moc_clientGui.o: moc_clientGui.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_clientGui.o moc_clientGui.cpp
 
 ####### Install
 

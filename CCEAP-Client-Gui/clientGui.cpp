@@ -1,27 +1,29 @@
-#include "cceap.h"
+#include "clientGui.h"
 #include "ui_cceap.h"
 
 #include <QProcess>
 #include <QDebug>
 
-CCEAP::CCEAP(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
+ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
 {
+    //init the gui
     ui->setupUi(this);
 
     model = new QStringListModel(this);
-    //model->setStringList(list);
     ui->listView->setModel(model);
 
-
-    //connect(ui->send_button, SIGNAL (released()), this, SLOT (on_actionSend_triggered()));
+    //validate ipaddress
+    QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
+    QRegExpValidator regValidator( rx, 0 );
+    ui->D_lineEdit->setValidator( &regValidator );
 }
 
-CCEAP::~CCEAP()
+ClientGui::~ClientGui()
 {
     delete ui;
 }
 
-void CCEAP::on_actionSend_triggered()
+void ClientGui::on_actionSend_triggered()
 {
     QString parameters="";
     QString list;
@@ -30,18 +32,6 @@ void CCEAP::on_actionSend_triggered()
 
     /*
 // read user inputs
-
-//    parameters.insert("P",ui->P_lineEdit->text());
-//    parameters.insert("D",ui->D_lineEdit->text());
-
-//    parameters.insert("v",""+ui->v_checkBox->isChecked());
-//    parameters.insert("t",ui->t_plainTextEdit->toPlainText());
-//    parameters.insert("c",ui->c_spinBox->text());
-//    parameters.insert("i",ui->i_spinbox->text());
-//    parameters.insert("p",ui->p_lineEdit->text());
-//    parameters.insert("x",ui->x_lineEdit->text());
-//    parameters.insert("s",ui->s_plainTextEdit->toPlainText());
-//    parameters.insert("o",ui->o_lineEdit->text());
 
     QString D, //x   Destination IP x to connect to
             P, //x   TCP port x to connect to
@@ -66,12 +56,27 @@ void CCEAP::on_actionSend_triggered()
 
     */
 
-    parameters += " -D "+ui->D_lineEdit->text();
-    list += "\n'-D'  Destination IP x to connect to: "+ui->D_lineEdit->text();
+    //parse users inputs
 
-    parameters += " -P "+ui->P_lineEdit->text();
-    list += "\n'-P' TCP port x to connect to: "+ui->P_lineEdit->text();
+//parse port number
+    QString port,tmp = ui->P_lineEdit->text();
+    if(tmp.length()==4 && tmp.at(0).isDigit() && tmp.at(1).isDigit() && tmp.at(3).isDigit() && tmp.at(3).isDigit())
+        port=tmp;
+    else
+        port= "4444";
+    parameters += " -P "+port;
+    list += "\n'-P' TCP port x to connect to: "+port;
 
+
+
+
+//parse ip address
+    QString ip = ui->D_lineEdit->text();
+    if(ip.length()<6)
+        ip="127.0.0.1";
+
+    parameters += " -D "+ip;
+    list += "\n'-D'  Destination IP x to connect to: "+ip;
 
 
     if(ui->v_checkBox->isChecked()){
@@ -132,41 +137,46 @@ void CCEAP::on_actionSend_triggered()
 
     //system(command);
 
-    QProcess process;
-    process.start(command);
-    process.waitForFinished(-1);
+    /* Start a process.
+     * this process is used by qt to execute an external program.
+     * use waitForFinished to force this thread to wait for clientProcess
+     * to return before proceeding
+    */
+    QProcess clientProcess;
+    clientProcess.start(command);
+    clientProcess.waitForFinished(-1);
 
 
     //display program's output in a formated layout, separating each output with a horizontal line
     result <<  "Program output for call number :"\
                "\n"+
-               process.readAllStandardOutput()+
+               clientProcess.readAllStandardOutput()+
                "\n"+parameters+
                "\n"+list+
-               "\n"+process.readAllStandardError()+""
+               "\n"
+               "\n"+clientProcess.readAllStandardError()+""
     "---------------------------------------------------------------------------------------------------------------";
 
-    //update display
-    model->setStringList(result);
-    ui->listView->setModel(model);
-    ui->listView->scrollToBottom();
-    ui->listView->update();
+    display(result);
 
 }
 
-char* CCEAP::qStringToCharPtr(QString str){
+char* ClientGui::qStringToCharPtr(QString str){
     char*  cstr = new char[str.length()];
     for(int i =0; i < str.length(); i++)
         cstr[i] = str.at(i).toLatin1();
     return cstr;
 }
 
-void CCEAP::on_commandLinkButton_clicked()
+void ClientGui::on_commandLinkButton_clicked()
 {
     on_actionSend_triggered();
 }
 
-void CCEAP::on_comboBox_currentIndexChanged(int index)
+/*event handlre for changed in seqNumber options
+ * this simply enables the ui cotrol corresponding to users choice
+*/
+void ClientGui::on_comboBox_currentIndexChanged(int index)
 {
     if(index==1){
         ui->i_spinbox->setVisible(true);
@@ -189,4 +199,43 @@ void CCEAP::on_comboBox_currentIndexChanged(int index)
         ui->s_label->setVisible(false);
     }
 
+}
+
+void ClientGui::on_pushButton_2_clicked()
+{
+
+    //clear display
+    result.clear();
+    model->setStringList(result);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
+}
+
+void ClientGui::display(QString data){
+
+    result.clear();
+    result << data;
+    model->setStringList(result);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
+}
+
+void ClientGui::display(QStringList data){
+
+    result.clear();
+    model->setStringList(data);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
+}
+
+bool ClientGui::isIPAddress(QString ipaddr)
+{
+
+    QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
+    QRegExpValidator regValidator( rx, 0 );
+
+    return true;
 }
