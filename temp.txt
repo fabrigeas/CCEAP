@@ -1,25 +1,13 @@
+The Covert Channel Educational Analysis Protocol (CCEAP) 
+is a simple network protocol designed for teaching 
+covert channels (network steganography) to professionals and students.
 
-- JRE: Java-Runtime Environment
-- JDK: Java-Development Kit
-- SDK: Software Development Kit
-- IDE: Integrated Development Environment
-- CCEAP: Covert Channel Educational Analysis Protocol
-- U: User Interface
-- GUI: Graphical User Interface
-- OS: Operating System
-- Enet: Ethernet
-- TCP: Transmission Control Protocol
-- TCP/IP: TCP+ Internet Protocol
-- OS: Operating System
-- Javac: java compiler
-- JVM: Java Virtual Machine
-- QML: Qt Meta Language/Qt Modelling Language
-- XML: Extensible Markup Language
-- oData: Open Data source
-- CSV: Comma Separated Values
-- JSON: JavaScript Object Notation
-- CMD: Command Line tool
-- IP: Internet Protocol
-- TCP: Transmission Control Protocol
-- UDP: User Datagram Protocol
-- HTTP: 
+The protocol is explicitly vulnerable against several hiding patterns,
+ i.e. patterns that represent hiding methods (steganographic methods that create covert channels).
+  The protocol's structure is simple and self-explanatory and
+   its implementation is kept at a minimum level of code lines to make it especially accessible to students. 
+   The documentation of the protocol and the tool can be found here. In addition, there is an academic paper available for download.
+
+Please send requests and feedback to the author:
+ Steffen Wendzel, www.wendzel.de (wendzel (at) hs-worms (dot) de). 
+ Research on steganographic/covert channel teaching in higher education is currently performed by Steffen Wendzel and Wojciech Mazurczyk.

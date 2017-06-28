@@ -18,6 +18,7 @@ class ClientGui : public QMainWindow
         ~ClientGui();
         char* qStringToCharPtr(QString str);
         void display(QString);
+        void initMenuBar();
         void display(QStringList);
         bool isIPAddress(QString);
 
@@ -30,10 +31,18 @@ class ClientGui : public QMainWindow
 
         void on_pushButton_2_clicked();
 
+        //Menubar actions
+        void aboutCceap();
+        void developers();
+        void participate();
+        void help();
+
     private:
         Ui::CCEAP *ui;
         QStringListModel *model;
         QStringList list,result;
+
+
 };
 
 #endif // CCEAP_H

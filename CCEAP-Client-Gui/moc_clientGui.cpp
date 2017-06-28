@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'clientGui.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,15 +12,15 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'clientGui.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.5.1. It"
+#error "This file was generated using the moc from 5.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_ClientGui_t {
-    QByteArrayData data[7];
-    char stringdata0[126];
+    QByteArrayData data[11];
+    char stringdata0[165];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,13 +35,18 @@ QT_MOC_LITERAL(2, 34, 0), // ""
 QT_MOC_LITERAL(3, 35, 28), // "on_commandLinkButton_clicked"
 QT_MOC_LITERAL(4, 64, 31), // "on_comboBox_currentIndexChanged"
 QT_MOC_LITERAL(5, 96, 5), // "index"
-QT_MOC_LITERAL(6, 102, 23) // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(6, 102, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(7, 126, 10), // "aboutCceap"
+QT_MOC_LITERAL(8, 137, 10), // "developers"
+QT_MOC_LITERAL(9, 148, 11), // "participate"
+QT_MOC_LITERAL(10, 160, 4) // "help"
 
     },
     "ClientGui\0on_actionSend_triggered\0\0"
     "on_commandLinkButton_clicked\0"
     "on_comboBox_currentIndexChanged\0index\0"
-    "on_pushButton_2_clicked"
+    "on_pushButton_2_clicked\0aboutCceap\0"
+    "developers\0participate\0help"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +56,7 @@ static const uint qt_meta_data_ClientGui[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,15 +64,23 @@ static const uint qt_meta_data_ClientGui[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08 /* Private */,
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    1,   36,    2, 0x08 /* Private */,
-       6,    0,   39,    2, 0x08 /* Private */,
+       1,    0,   54,    2, 0x08 /* Private */,
+       3,    0,   55,    2, 0x08 /* Private */,
+       4,    1,   56,    2, 0x08 /* Private */,
+       6,    0,   59,    2, 0x08 /* Private */,
+       7,    0,   60,    2, 0x08 /* Private */,
+       8,    0,   61,    2, 0x08 /* Private */,
+       9,    0,   62,    2, 0x08 /* Private */,
+      10,    0,   63,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,    5,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -83,6 +96,10 @@ void ClientGui::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 1: _t->on_commandLinkButton_clicked(); break;
         case 2: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->on_pushButton_2_clicked(); break;
+        case 4: _t->aboutCceap(); break;
+        case 5: _t->developers(); break;
+        case 6: _t->participate(); break;
+        case 7: _t->help(); break;
         default: ;
         }
     }
@@ -113,13 +130,13 @@ int ClientGui::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 8;
     }
     return _id;
 }

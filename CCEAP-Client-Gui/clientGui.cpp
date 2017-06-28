@@ -7,7 +7,9 @@
 ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
 {
     //init the gui
+
     ui->setupUi(this);
+    initMenuBar();
 
     model = new QStringListModel(this);
     ui->listView->setModel(model);
@@ -16,6 +18,9 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
     QRegExpValidator regValidator( rx, 0 );
     ui->D_lineEdit->setValidator( &regValidator );
+
+
+
 }
 
 ClientGui::~ClientGui()
@@ -233,9 +238,46 @@ void ClientGui::display(QStringList data){
 
 bool ClientGui::isIPAddress(QString ipaddr)
 {
-
+    qDebug() <<ipaddr;
     QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
     QRegExpValidator regValidator( rx, 0 );
 
     return true;
+}
+
+void ClientGui::initMenuBar(){
+    //Initialize the menubar
+    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
+    ui->menuHelp->addAction("developers", this, SLOT(developers()));
+    ui->menuHelp->addAction("participate", this, SLOT(participate()));
+    ui->menuHelp->addAction("help", this, SLOT(help()));
+}
+void ClientGui::aboutCceap(){
+    QStringList message;
+    message << "The Covert Channel Educational Analysis Protocol (CCEAP)\n"
+                " is a simple network protocol designed for teaching\n"
+                "covert channels (network steganography) to professionals and students.\n"
+                "The protocol is explicitly vulnerable against several hiding patterns,\n"
+                "i.e. patterns that represent hiding methods (steganographic methods that\n"
+               "create covert channels).The protocol's structure is simple and self-explanatory and\n"
+                "its implementation is kept at a minimum level of code lines to make it \n"
+               "especially accessible to students. The documentation of the protocol and\n"
+               " the tool can be found here. In addition, there is an academic paper available for download.\n"
+                "Please send requests and feedback to the author:Steffen Wendzel,\n "
+               "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
+               "steganographic/covert channel teaching in higher education is currently performed by \n"
+               "Steffen Wendzel and Wojciech Mazurczyk.";
+    display(message);
+    qDebug() << message;
+}
+void ClientGui::developers(){
+
+}
+
+void ClientGui::participate(){
+
+}
+
+void ClientGui::help(){
+
 }
