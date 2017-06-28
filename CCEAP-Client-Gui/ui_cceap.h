@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'cceap.ui'
 **
-** Created by: Qt User Interface Compiler version 5.5.1
+** Created by: Qt User Interface Compiler version 5.9.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -262,6 +262,9 @@ public:
 
         P_lineEdit = new QLineEdit(centralWidget);
         P_lineEdit->setObjectName(QStringLiteral("P_lineEdit"));
+        P_lineEdit->setEnabled(true);
+        P_lineEdit->setAutoFillBackground(false);
+        P_lineEdit->setInputMethodHints(Qt::ImhDigitsOnly);
 
         gridLayout->addWidget(P_lineEdit, 0, 6, 1, 1);
 
@@ -814,7 +817,7 @@ public:
         CCEAP->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CCEAP);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1288, 25));
+        menuBar->setGeometry(QRect(0, 0, 1288, 17));
         menuFILE = new QMenu(menuBar);
         menuFILE->setObjectName(QStringLiteral("menuFILE"));
         menuEdit = new QMenu(menuBar);
@@ -852,103 +855,103 @@ public:
 
     void retranslateUi(QMainWindow *CCEAP)
     {
-        CCEAP->setWindowTitle(QApplication::translate("CCEAP", "CCEAP", 0));
-        actionNew->setText(QApplication::translate("CCEAP", "&new", 0));
-        actionLoad->setText(QApplication::translate("CCEAP", "&load", 0));
-        actionSave->setText(QApplication::translate("CCEAP", "&save", 0));
-        actionClose->setText(QApplication::translate("CCEAP", "&close", 0));
-        actionExit->setText(QApplication::translate("CCEAP", "&exit", 0));
-        actionClear->setText(QApplication::translate("CCEAP", "clea&r", 0));
-        actionUndi->setText(QApplication::translate("CCEAP", "&undi", 0));
-        actionRedo->setText(QApplication::translate("CCEAP", "&redo", 0));
-        actionCommit->setText(QApplication::translate("CCEAP", "&commit", 0));
-        actionAbout->setText(QApplication::translate("CCEAP", "&About", 0));
-        actionDeveloper->setText(QApplication::translate("CCEAP", "&Developer", 0));
-        actionContribute->setText(QApplication::translate("CCEAP", "&contribute", 0));
-        actionSend->setText(QApplication::translate("CCEAP", "send", 0));
+        CCEAP->setWindowTitle(QApplication::translate("CCEAP", "Client", Q_NULLPTR));
+        actionNew->setText(QApplication::translate("CCEAP", "&new", Q_NULLPTR));
+        actionLoad->setText(QApplication::translate("CCEAP", "&load", Q_NULLPTR));
+        actionSave->setText(QApplication::translate("CCEAP", "&save", Q_NULLPTR));
+        actionClose->setText(QApplication::translate("CCEAP", "&close", Q_NULLPTR));
+        actionExit->setText(QApplication::translate("CCEAP", "&exit", Q_NULLPTR));
+        actionClear->setText(QApplication::translate("CCEAP", "clea&r", Q_NULLPTR));
+        actionUndi->setText(QApplication::translate("CCEAP", "&undi", Q_NULLPTR));
+        actionRedo->setText(QApplication::translate("CCEAP", "&redo", Q_NULLPTR));
+        actionCommit->setText(QApplication::translate("CCEAP", "&commit", Q_NULLPTR));
+        actionAbout->setText(QApplication::translate("CCEAP", "&About", Q_NULLPTR));
+        actionDeveloper->setText(QApplication::translate("CCEAP", "&Developer", Q_NULLPTR));
+        actionContribute->setText(QApplication::translate("CCEAP", "&contribute", Q_NULLPTR));
+        actionSend->setText(QApplication::translate("CCEAP", "send", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        actionSend->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>click to send packets with the given parameters</p></body></html>", 0));
+        actionSend->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>click to send packets with the given parameters</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_TOOLTIP
-        label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Destination IP x to connect to</p><p><br/></p></body></html>", 0));
+        label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Destination IP x to connect to</p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        label->setText(QApplication::translate("CCEAP", "ip address", 0));
+        label->setText(QApplication::translate("CCEAP", "ip address", Q_NULLPTR));
         D_lineEdit->setText(QString());
-        D_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "enter server's ip address. Default 127.0.0.1", 0));
-        label_2->setText(QApplication::translate("CCEAP", "port", 0));
+        D_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "enter server's ip address. Default 127.0.0.1", Q_NULLPTR));
+        label_2->setText(QApplication::translate("CCEAP", "port", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        P_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>TCP port x to connect to</p></body></html>", 0));
+        P_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>TCP port x to connect to</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         P_lineEdit->setText(QString());
-        P_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "port number. Default 4444", 0));
+        P_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "port number. Default 4444", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        v_checkBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Activate verbose mode</p></body></html>", 0));
+        v_checkBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Activate verbose mode</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        v_checkBox->setText(QApplication::translate("CCEAP", "verbose", 0));
+        v_checkBox->setText(QApplication::translate("CCEAP", "verbose", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        u_spinBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p><span style=\" color:#008000;\">Use this instead of 0 as dummy value in the main header</span></p></body></html>", 0));
+        u_spinBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p><span style=\" color:#008000;\">Use this instead of 0 as dummy value in the main header</span></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         display->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        c_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>number of packets to send. (default = 10)</p></body></html>", 0));
+        c_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>number of packets to send. (default = 10)</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        c_label->setText(QApplication::translate("CCEAP", "number ofpackets", 0));
-        s_plainTextEdit->setPlaceholderText(QApplication::translate("CCEAP", "eg. 1,2,3,..n", 0));
+        c_label->setText(QApplication::translate("CCEAP", "number ofpackets", Q_NULLPTR));
+        s_plainTextEdit->setPlaceholderText(QApplication::translate("CCEAP", "eg. 1,2,3,..n", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        u_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use digit x instead of 0 as `dummy' value in the main header</p><p><br/></p></body></html>", 0));
+        u_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use digit x instead of 0 as `dummy' value in the main header</p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        u_label->setText(QApplication::translate("CCEAP", "dummy", 0));
+        u_label->setText(QApplication::translate("CCEAP", "dummy", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        t_plainTextEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p><span style=\" color:#008000;\">Usetheinter-arrivaltimesin'x'betweenpackets(xshould </span><span style=\" font-family:'Courier New,courier'; color:#008000;\">begivenintheformat'Time_1,Time_2,...'(inusec/1000)</span></p><p><br/></p></body></html>", 0));
+        t_plainTextEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p><span style=\" color:#008000;\">Usetheinter-arrivaltimesin'x'betweenpackets(xshould </span><span style=\" font-family:'Courier New,courier'; color:#008000;\">begivenintheformat'Time_1,Time_2,...'(inusec/1000)</span></p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        t_plainTextEdit->setPlaceholderText(QApplication::translate("CCEAP", "format 'Time_1,Time_2,...' (in usec/1000)", 0));
+        t_plainTextEdit->setPlaceholderText(QApplication::translate("CCEAP", "format 'Time_1,Time_2,...' (in usec/1000)", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        i_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>starting sequence number. will be incremented for each next packet</p></body></html>", 0));
+        i_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>starting sequence number. will be incremented for each next packet</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        i_label->setText(QApplication::translate("CCEAP", "starting sequence", 0));
+        i_label->setText(QApplication::translate("CCEAP", "starting sequence", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        s_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use a pre defined sequence numbers given in x in the form:</p><p>'Seq_1,Seq_2,Seq_3', e.g. '1,2,3', where 1 is the ISN</p><p><br/></p></body></html>", 0));
+        s_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use a pre defined sequence numbers given in x in the form:</p><p>'Seq_1,Seq_2,Seq_3', e.g. '1,2,3', where 1 is the ISN</p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        s_label->setText(QApplication::translate("CCEAP", "sequence numbers", 0));
-        o_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "eg. for a string with 3 options: '1,2,3/4,5,6/7,8,9'", 0));
+        s_label->setText(QApplication::translate("CCEAP", "sequence numbers", Q_NULLPTR));
+        o_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "eg. for a string with 3 options: '1,2,3/4,5,6/7,8,9'", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        t_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use the inter-arrival times in 'x' between packets (x should</p><p>       be given in the format 'Time_1,Time_2,...' (in usec/1000)</p><p><br/></p></body></html>", 0));
+        t_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use the inter-arrival times in 'x' between packets (x should</p><p>       be given in the format 'Time_1,Time_2,...' (in usec/1000)</p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        t_label->setText(QApplication::translate("CCEAP", "inter arrival gap", 0));
+        t_label->setText(QApplication::translate("CCEAP", "inter arrival gap", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        d_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>duplicate packet with the given sequence number</p></body></html>", 0));
+        d_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>duplicate packet with the given sequence number</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        d_label->setText(QApplication::translate("CCEAP", "destination addr", 0));
+        d_label->setText(QApplication::translate("CCEAP", "destination addr", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        d_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use CCEAP destination address x</p><p><br/></p></body></html>", 0));
+        d_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Use CCEAP destination address x</p><p><br/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         d_lineEdit->setText(QString());
 #ifndef QT_NO_TOOLTIP
-        p_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>duplicate packet with the given sequence number</p></body></html>", 0));
+        p_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>duplicate packet with the given sequence number</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        p_label->setText(QApplication::translate("CCEAP", "duplicate packet", 0));
+        p_label->setText(QApplication::translate("CCEAP", "duplicate packet", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        o_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Optional header elements specified via x.</p><p>       Formatting: 'Option_1/Option_2/Option_3/...' where each</p><p>       option is formatted as 'Identifier,Type,Value'.</p><p>       Maximum of allowed options: 32</p><p>       Example for a string with 3 options: '1,2,3/4,5,6/7,8,9'</p></body></html>", 0));
+        o_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Optional header elements specified via x.</p><p>       Formatting: 'Option_1/Option_2/Option_3/...' where each</p><p>       option is formatted as 'Identifier,Type,Value'.</p><p>       Maximum of allowed options: 32</p><p>       Example for a string with 3 options: '1,2,3/4,5,6/7,8,9'</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        o_label->setText(QApplication::translate("CCEAP", "optional", 0));
-        pushButton_2->setText(QApplication::translate("CCEAP", "reset", 0));
+        o_label->setText(QApplication::translate("CCEAP", "optional", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("CCEAP", "reset", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
-        x_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>exclude packet with the given sequence number</p></body></html>", 0));
+        x_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>exclude packet with the given sequence number</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        x_label->setText(QApplication::translate("CCEAP", "exclude packet", 0));
-        commandLinkButton->setText(QApplication::translate("CCEAP", "send", 0));
+        x_label->setText(QApplication::translate("CCEAP", "exclude packet", Q_NULLPTR));
+        commandLinkButton->setText(QApplication::translate("CCEAP", "send", Q_NULLPTR));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
-         << QApplication::translate("CCEAP", "default sequence numbers", 0)
-         << QApplication::translate("CCEAP", "specify starting sequence number", 0)
-         << QApplication::translate("CCEAP", "enter list of sequence numbers", 0)
+         << QApplication::translate("CCEAP", "default sequence numbers", Q_NULLPTR)
+         << QApplication::translate("CCEAP", "specify starting sequence number", Q_NULLPTR)
+         << QApplication::translate("CCEAP", "enter list of sequence numbers", Q_NULLPTR)
         );
 #ifndef QT_NO_TOOLTIP
-        comboBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>you can either provide a starting sequence numbe, or</p><p>give a predefined list of sequence numbers  to be used.</p></body></html>", 0));
+        comboBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>you can either provide a starting sequence numbe, or</p><p>give a predefined list of sequence numbers  to be used.</p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
-        menuFILE->setTitle(QApplication::translate("CCEAP", "&File", 0));
-        menuEdit->setTitle(QApplication::translate("CCEAP", "&Edit", 0));
-        menuHelp->setTitle(QApplication::translate("CCEAP", "&Help", 0));
+        menuFILE->setTitle(QApplication::translate("CCEAP", "&File", Q_NULLPTR));
+        menuEdit->setTitle(QApplication::translate("CCEAP", "&Edit", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("CCEAP", "&Help", Q_NULLPTR));
     } // retranslateUi
 
 };

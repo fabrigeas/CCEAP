@@ -32,7 +32,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>CCEAP</string>
+   <string>Client</string>
   </property>
   <property name="autoFillBackground">
    <bool>true</bool>
@@ -901,8 +901,17 @@
     </item>
     <item row="0" column="6">
      <widget class="QLineEdit" name="P_lineEdit">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TCP port x to connect to&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="inputMethodHints">
+       <set>Qt::ImhDigitsOnly</set>
       </property>
       <property name="text">
        <string/>
@@ -4864,7 +4873,7 @@
      <x>0</x>
      <y>0</y>
      <width>1288</width>
-     <height>25</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFILE">
