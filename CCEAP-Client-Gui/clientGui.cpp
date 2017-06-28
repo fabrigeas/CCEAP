@@ -13,6 +13,8 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
 
     model = new QStringListModel(this);
     ui->listView->setModel(model);
+    ui->i_label->setVisible(false);
+    ui->i_spinbox->setVisible(false);
 
     //validate ipaddress
     QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
@@ -271,7 +273,13 @@ void ClientGui::aboutCceap(){
     qDebug() << message;
 }
 void ClientGui::developers(){
-
+    QStringList message;
+    message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
+    message << "https://github.com/cdpxe/CCEAP\n";
+    message << "This GUI tool has been developped under the framework \n"
+               "of the bachelor's thesis by";
+    message <<  "Fabrice, Feugang Kemegni: fabrigeas@gmail.com https://github.com/fabrigeas/bachelor-thesis\n";
+    display(message);
 }
 
 void ClientGui::participate(){
@@ -279,5 +287,10 @@ void ClientGui::participate(){
 }
 
 void ClientGui::help(){
+    QStringList message;
+
+
+    display(message);
+
 
 }
