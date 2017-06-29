@@ -2639,11 +2639,11 @@
       </property>
       <property name="font">
        <font>
-        <family>Cabin</family>
-        <pointsize>10</pointsize>
-        <weight>50</weight>
+        <family>Courier 10 Pitch</family>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
         <italic>false</italic>
-        <bold>false</bold>
+        <bold>true</bold>
        </font>
       </property>
       <property name="spacing">

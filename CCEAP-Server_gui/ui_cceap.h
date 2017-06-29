@@ -108,11 +108,12 @@ public:
         font.setFamily(QStringLiteral("Courier 10 Pitch"));
         font.setPointSize(11);
         font.setBold(true);
-        font.setItalic(true);
+        font.setItalic(false);
         font.setWeight(75);
         listView->setFont(font);
         listView->setLineWidth(1);
         listView->setAutoScrollMargin(16);
+        listView->setSpacing(12);
 
         gridLayout->addWidget(listView, 1, 1, 1, 2);
 

@@ -76,7 +76,7 @@
         <family>Courier 10 Pitch</family>
         <pointsize>11</pointsize>
         <weight>75</weight>
-        <italic>true</italic>
+        <italic>false</italic>
         <bold>true</bold>
        </font>
       </property>
@@ -85,6 +85,9 @@
       </property>
       <property name="autoScrollMargin">
        <number>16</number>
+      </property>
+      <property name="spacing">
+       <number>12</number>
       </property>
      </widget>
     </item>
