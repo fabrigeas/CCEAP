@@ -1,8 +1,8 @@
 
 
-Bachelor Thesis
+##Bachelor Thesis
 
-DESIGN AND IMPLEMENTATION OF CCEAP USER INTERFACE
+#DESIGN AND IMPLEMENTATION OF CCEAP USER INTERFACE
 
 
 Bachelor Thesis Submitted as Partial Fulfilment of the Requirements for the Degree of B.Sc.  in Applied computer science at the University of applied sciences (Hochschule Worms)
@@ -20,15 +20,16 @@ supervised by Prof.  Dr.  Stephen Wendzel
 
 
 
-									Applied Computer Science
-									Software construction
+							Applied Computer Science
+							Software construction
 
 Declaration of Authenticity
 
 
 
 
-	I hereby declare that all material presented in this document is my own work. I fully and specifically acknowledge wherever adapted from other sources.
+	I hereby declare that all material presented in this document is my own work. 
+I fully and specifically acknowledge wherever adapted from other sources.
 I understand that if at any time it is shown or proven that I have intentionally misrepresented  material present here, any decree or credits awarded to me on the basis of the material may be revoked.
 I declare that all statements and information contained here is true, correct and accurate to the best of my knowledge and belief.
 
@@ -39,7 +40,7 @@ Ludwigshafen, Summer 2017.
 ………………………………..
 Feugang Kemegni Fabrice
 
-Abstract
+##Abstract
 
 	This Bachelor thesis discusses the development of a graphical user interface program as an interface to a command line program CCEAP.
 CCEAP (Covert Channel Educational Analysis Protocol) is a networking protocol in the form of a command line program to help learn/teach covert channels and hiding patterns.
