@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    clientGui.cpp
+    clientGui.cpp \
+    thread.cpp
 
 HEADERS  += \
-    clientGui.h
+    clientGui.h \
+    thread.h
 
 FORMS    += cceap.ui

@@ -24,12 +24,10 @@ class ClientGui : public QMainWindow
 
     private slots:
         void on_actionSend_triggered();
-
         void on_commandLinkButton_clicked();
-
         void on_comboBox_currentIndexChanged(int index);
-
         void on_pushButton_2_clicked();
+        void dataReceived(QStringList);
 
         //Menubar actions
         void aboutCceap();

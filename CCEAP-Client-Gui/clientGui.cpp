@@ -1,5 +1,6 @@
 #include "clientGui.h"
 #include "ui_cceap.h"
+#include "thread.h"
 
 #include <QProcess>
 #include <QDebug>
@@ -270,27 +271,34 @@ void ClientGui::aboutCceap(){
                "steganographic/covert channel teaching in higher education is currently performed by \n"
                "Steffen Wendzel and Wojciech Mazurczyk.";
     display(message);
-    qDebug() << message;
+    //qDebug() << message;
 }
 void ClientGui::developers(){
-    QStringList message;
-    message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
-    message << "https://github.com/cdpxe/CCEAP\n";
-    message << "This GUI tool has been developped under the framework \n"
-               "of the bachelor's thesis by";
-    message <<  "Fabrice, Feugang Kemegni: fabrigeas@gmail.com https://github.com/fabrigeas/bachelor-thesis\n";
-    display(message);
-}
 
+    Thead *thread = new Thead();
+
+     /*This registers the slot(the gui's dataReceivedFromServer(QStringList) function)
+      * with a stringList parameter.
+      * Once the serverThread has completed its task,
+      * it will then emit a signal and return a QStringList to this gui
+      * upon emiting the signal and QStringList, the function dataReceivedFromServer(QStringList)
+      * will be called to process the result  QStringList.
+     */
+     QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
+
+}
 void ClientGui::participate(){
 
 }
-
 void ClientGui::help(){
-    QStringList message;
-
-
-    display(message);
-
-
+    qDebug() << "help clicked";
+    Thead *thread = new Thead();
+    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
+    thread->start();
+    qDebug() << "slot registered";
+}
+void ClientGui::dataReceived(QStringList data)
+{
+    qDebug() << "data received";
+    display(data);
 }
