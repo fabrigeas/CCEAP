@@ -17,6 +17,7 @@ class ServerThread : public QThread
         explicit ServerThread(QString);
         void run();
         QString validatePortNumber(QString);
+        void initMenuBar();
 
     signals:
         void signal(QStringList);

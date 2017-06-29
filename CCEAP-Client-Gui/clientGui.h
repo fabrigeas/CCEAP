@@ -23,7 +23,7 @@ class ClientGui : public QMainWindow
 
         bool isIPAddress(QString);
 
-    private slots:
+    public slots:
         void clcearScreen();
         void dataReceived(QStringList);
         void parseData(QStringList);

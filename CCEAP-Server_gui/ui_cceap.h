@@ -119,7 +119,7 @@ public:
         CCEAP->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CCEAP);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 800, 25));
+        menuBar->setGeometry(QRect(0, 0, 800, 19));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menuBar);
@@ -140,8 +140,7 @@ public:
         menuFile->addAction(actionImport);
         menuFile->addAction(actionExport);
         menuFile->addAction(actionClose);
-        menuHelp->addAction(actionAbout_CCEAP);
-        menuHelp->addAction(actionDeveloper);
+        menuHelp->addSeparator();
 
         retranslateUi(CCEAP);
 

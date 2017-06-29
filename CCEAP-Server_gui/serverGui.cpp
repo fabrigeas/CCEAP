@@ -14,6 +14,7 @@ ServerGui::ServerGui(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
 
     //inig the GUI
     ui->setupUi(this);
+    initMenuBar();
 
     //hint the server's ipaddress
     ui->ip_lineEdit->setPlaceholderText("server listening to: "+getLocalIP());
@@ -99,4 +100,90 @@ QString ServerGui::getLocalIP(){
         if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost))
              return address.toString();
     return "127.0.0.1";
+}
+void ServerGui::display(QString data){
+    QStringList result;
+    result.clear();
+    result << data;
+    model->setStringList(result);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
+}
+
+void ServerGui::display(QStringList data){
+    QStringList result;
+    result.clear();
+    model->setStringList(data);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
+}
+
+void ServerGui::initMenuBar(){
+    //Initialize the menubar
+    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
+    ui->menuHelp->addAction("developers", this, SLOT(developers()));
+    ui->menuHelp->addAction("participate", this, SLOT(participate()));
+    ui->menuHelp->addAction("help", this, SLOT(help()));
+}
+void ServerGui::aboutCceap(){
+    QStringList message;
+    message << "The Covert Channel Educational Analysis Protocol (CCEAP)\n"
+                " is a simple network protocol designed for teaching\n"
+                "covert channels (network steganography) to professionals and students.\n\n"
+                "The protocol is explicitly vulnerable against several hiding patterns,\n"
+                "i.e. patterns that represent hiding methods (steganographic methods that\n"
+               "create covert channels).The protocol's structure is simple and self-explanatory and\n"
+                "its implementation is kept at a minimum level of code lines to make it \n"
+               "especially accessible to students. \n";
+
+    message << "The documentation of the protocol and the tool can be found here";
+
+    message << "https://github.com/cdpxe/CCEAP/tree/master/documentation\n";
+
+    message << " In addition, there is an academic paper available for download";
+
+    message << "http://dl.acm.org/citation.cfm?id=2989037\n";
+
+    message << "Please send requests and feedback to the author:Steffen Wendzel,";
+
+    message << "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
+               "steganographic/covert channel teaching in higher education is currently performed by \n"
+               "Steffen Wendzel and Wojciech Mazurczyk.";
+    display(message);
+
+}
+void ServerGui::developers(){
+
+    QStringList message;
+    message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
+    message << "https://github.com/cdpxe/CCEAP\n";
+    message << "www.wendzel.de";
+    message << "wendzel@hs-worms.de\n";
+
+    message << "This GUI tool has been developped as Bachelor Thesis Submitted as Partial Fulfilment \n"
+               "of the Requirements for the Degree of B.Sc.  in Applied computer science \n"
+               "at the University of applied sciences (Hochschule Worms) \n"
+               "by Feugang Kemegni Fabrice "
+               "\nSubmitted Summer, 2017\nsupervised by Prof.  Dr.  Stephen Wendzel";
+    message <<  "\nFabrice, Feugang Kemegni:\n";
+    message <<  "fabrigeas@gmail.com\n";
+    message <<  "http://fabrigeas.eu.pn/\n";
+    message <<  "https://github.com/fabrigeas/bachelor-thesis\n";
+    display(message);
+
+}
+void ServerGui::participate(){
+    QStringList message;
+    message << "Please contact Prof Wendzel to participate to CCEAP.\n";
+    message << "www.wendzel.de";
+    message << "wendzel@hs-worms.de";
+
+    display(message);
+}
+void ServerGui::help(){
+//    ServerThread *thread = new Thead("./client -h");
+//    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
+//    thread->start();;
 }

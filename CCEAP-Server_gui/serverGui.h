@@ -15,11 +15,19 @@ class ServerGui : public QMainWindow
         explicit ServerGui(QWidget *parent = 0);
         ~ServerGui();
         QString getLocalIP();
+        void display(QString);
+        void display(QStringList);
+        void initMenuBar();
 
 
     public slots:
         void on_startServerButton_clicked();
         void dataReceivedFromServer(QStringList stringList);
+
+        void aboutCceap();
+        void developers();
+        void participate();
+        void help();
 
     signals:
 

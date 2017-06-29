@@ -96,7 +96,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -116,8 +116,7 @@
     <property name="title">
      <string>Help</string>
     </property>
-    <addaction name="actionAbout_CCEAP"/>
-    <addaction name="actionDeveloper"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
