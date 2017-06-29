@@ -5651,7 +5651,7 @@
      </widget>
     </item>
     <item row="13" column="2" colspan="2">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="clearScreenB">
       <property name="text">
        <string>reset</string>
       </property>
@@ -6083,7 +6083,7 @@
      </widget>
     </item>
     <item row="13" column="4">
-     <widget class="QCommandLinkButton" name="commandLinkButton">
+     <widget class="QCommandLinkButton" name="sendDataB">
       <property name="palette">
        <palette>
         <active>
@@ -6505,7 +6505,7 @@
      </widget>
     </item>
     <item row="3" column="3">
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="seqNoType">
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;you can either provide a starting sequence numbe, or&lt;/p&gt;&lt;p&gt;give a predefined list of sequence numbers  to be used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>

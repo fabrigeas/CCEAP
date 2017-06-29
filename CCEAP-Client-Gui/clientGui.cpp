@@ -326,3 +326,18 @@ void ClientGui::dataReceived(QStringList data)
 {
     display(data);
 }
+
+void ClientGui::on_seqNoType_activated(const QString &arg1)
+{
+    qDebug() << "seq nu changed";
+}
+
+void ClientGui::on_sendDataB_clicked()
+{
+    sendData();
+}
+
+void ClientGui::on_clearScreenB_clicked()
+{
+    clcearScreen();
+}

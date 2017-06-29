@@ -75,10 +75,10 @@ public:
     QSpinBox *x_spinBox;
     QLabel *p_label;
     QLabel *o_label;
-    QPushButton *pushButton_2;
+    QPushButton *clearScreenB;
     QLabel *x_label;
-    QCommandLinkButton *commandLinkButton;
-    QComboBox *comboBox;
+    QCommandLinkButton *sendDataB;
+    QComboBox *seqNoType;
     QMenuBar *menuBar;
     QMenu *menuFILE;
     QMenu *menuEdit;
@@ -922,10 +922,10 @@ public:
 
         gridLayout->addWidget(o_label, 11, 0, 1, 2);
 
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        clearScreenB = new QPushButton(centralWidget);
+        clearScreenB->setObjectName(QStringLiteral("clearScreenB"));
 
-        gridLayout->addWidget(pushButton_2, 13, 2, 1, 2);
+        gridLayout->addWidget(clearScreenB, 13, 2, 1, 2);
 
         x_label = new QLabel(centralWidget);
         x_label->setObjectName(QStringLiteral("x_label"));
@@ -979,8 +979,8 @@ public:
 
         gridLayout->addWidget(x_label, 10, 0, 1, 3);
 
-        commandLinkButton = new QCommandLinkButton(centralWidget);
-        commandLinkButton->setObjectName(QStringLiteral("commandLinkButton"));
+        sendDataB = new QCommandLinkButton(centralWidget);
+        sendDataB->setObjectName(QStringLiteral("sendDataB"));
         QPalette palette14;
         palette14.setBrush(QPalette::Active, QPalette::WindowText, brush);
         QBrush brush26(QColor(0, 170, 0, 255));
@@ -1039,14 +1039,14 @@ public:
         palette14.setBrush(QPalette::Disabled, QPalette::AlternateBase, brush26);
         palette14.setBrush(QPalette::Disabled, QPalette::ToolTipBase, brush8);
         palette14.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
-        commandLinkButton->setPalette(palette14);
+        sendDataB->setPalette(palette14);
 
-        gridLayout->addWidget(commandLinkButton, 13, 4, 1, 1);
+        gridLayout->addWidget(sendDataB, 13, 4, 1, 1);
 
-        comboBox = new QComboBox(centralWidget);
-        comboBox->setObjectName(QStringLiteral("comboBox"));
+        seqNoType = new QComboBox(centralWidget);
+        seqNoType->setObjectName(QStringLiteral("seqNoType"));
 
-        gridLayout->addWidget(comboBox, 3, 3, 1, 1);
+        gridLayout->addWidget(seqNoType, 3, 3, 1, 1);
 
         CCEAP->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(CCEAP);
@@ -1165,20 +1165,20 @@ public:
         o_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Optional header elements specified via x.</p><p>       Formatting: 'Option_1/Option_2/Option_3/...' where each</p><p>       option is formatted as 'Identifier,Type,Value'.</p><p>       Maximum of allowed options: 32</p><p>       Example for a string with 3 options: '1,2,3/4,5,6/7,8,9'</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         o_label->setText(QApplication::translate("CCEAP", "optional", 0));
-        pushButton_2->setText(QApplication::translate("CCEAP", "reset", 0));
+        clearScreenB->setText(QApplication::translate("CCEAP", "reset", 0));
 #ifndef QT_NO_TOOLTIP
         x_label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>exclude packet with the given sequence number</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         x_label->setText(QApplication::translate("CCEAP", "exclude packet", 0));
-        commandLinkButton->setText(QApplication::translate("CCEAP", "send", 0));
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
+        sendDataB->setText(QApplication::translate("CCEAP", "send", 0));
+        seqNoType->clear();
+        seqNoType->insertItems(0, QStringList()
          << QApplication::translate("CCEAP", "default sequence numbers", 0)
          << QApplication::translate("CCEAP", "specify starting sequence number", 0)
          << QApplication::translate("CCEAP", "enter list of sequence numbers", 0)
         );
 #ifndef QT_NO_TOOLTIP
-        comboBox->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>you can either provide a starting sequence numbe, or</p><p>give a predefined list of sequence numbers  to be used.</p></body></html>", 0));
+        seqNoType->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>you can either provide a starting sequence numbe, or</p><p>give a predefined list of sequence numbers  to be used.</p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         menuFILE->setTitle(QApplication::translate("CCEAP", "&File", 0));
         menuEdit->setTitle(QApplication::translate("CCEAP", "&Edit", 0));

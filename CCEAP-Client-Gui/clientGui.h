@@ -34,7 +34,15 @@ class ClientGui : public QMainWindow
         void participate();
         void help();
 
-    private:
+        void on_comboBox_activated(const QString &arg1);
+
+        void on_seqNoType_activated(const QString &arg1);
+
+        void on_sendDataB_clicked();
+
+        void on_clearScreenB_clicked();
+
+private:
         Ui::CCEAP *ui;
         QStringListModel *model;
         QStringList list,result;
