@@ -11,6 +11,7 @@
 
 
 Thead::Thead(){}
+Thead::Thead(QString data):cmd(data){}
 
 void Thead::run()
 {
@@ -26,29 +27,17 @@ void Thead::run()
      * This is required because we need to process the output of the cceapServer.
     */
 
+    //cmd = "./client -h ";
     QProcess thread;
-    thread.start("./client -h ");
+    thread.start(cmd);
 
     //forces this.Thead to wait for output of cceapServer
     thread.waitForFinished(-1);
 
-    /*read all cceapServer's outputs
-     * both readAllStandardOutput and readAllStandardOutput
-     * are returned in 'readAllStandardOutput'
-     * so no need to read both of them
-    */
-    QString stdout = thread.readAllStandardOutput();
 
-    /*The output of cceap is a string, however the GUI needs alist QStringList
-     * of list of error to display to users, so the stdout string must be split into a StringList
-     * before been returned.
-     * In the cceapServer output, each packet begins with received Data ...
-     * so we use such pattern as delimiter to split the String into an String list
-     *
-    */
-    QRegExp rx("received");
-    list = stdout.split(rx);
+    list << thread.readAllStandardOutput() << thread.readAllStandardError();
 
+    qDebug() << list;
 
     //return tha processed data(StringList) to the GUI then exit
     emit signal(list);

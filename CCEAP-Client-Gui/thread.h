@@ -15,6 +15,7 @@ class Thead : public QThread
     Q_OBJECT
     public:
         explicit Thead();
+        explicit Thead(QString data);
         void run();
 
     signals:
@@ -22,6 +23,7 @@ class Thead : public QThread
 
     private:
         QStringListModel *model;
+        QString cmd;
 
 };
 

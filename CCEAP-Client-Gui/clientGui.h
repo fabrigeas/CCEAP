@@ -18,15 +18,15 @@ class ClientGui : public QMainWindow
         ~ClientGui();
         char* qStringToCharPtr(QString str);
         void display(QString);
-        void initMenuBar();
         void display(QStringList);
+        void initMenuBar();
+
         bool isIPAddress(QString);
 
     private slots:
-        void sendData();
-        void seqNoTypeChanged(int index);
         void clcearScreen();
         void dataReceived(QStringList);
+        void parseData(QStringList);
 
         //Menubar actions
         void aboutCceap();
@@ -34,13 +34,11 @@ class ClientGui : public QMainWindow
         void participate();
         void help();
 
-        void on_comboBox_activated(const QString &arg1);
-
-        void on_seqNoType_activated(const QString &arg1);
-
         void on_sendDataB_clicked();
 
         void on_clearScreenB_clicked();
+
+        void on_seqNoType_currentIndexChanged(int index);
 
 private:
         Ui::CCEAP *ui;
