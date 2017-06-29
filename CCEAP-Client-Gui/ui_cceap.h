@@ -1093,7 +1093,7 @@ public:
         actionClose->setText(QApplication::translate("CCEAP", "&close", 0));
         actionExit->setText(QApplication::translate("CCEAP", "&exit", 0));
         actionClear->setText(QApplication::translate("CCEAP", "clea&r", 0));
-        actionUndi->setText(QApplication::translate("CCEAP", "&undi", 0));
+        actionUndi->setText(QApplication::translate("CCEAP", "&undu", 0));
         actionRedo->setText(QApplication::translate("CCEAP", "&redo", 0));
         actionCommit->setText(QApplication::translate("CCEAP", "&commit", 0));
         actionAbout->setText(QApplication::translate("CCEAP", "&About", 0));

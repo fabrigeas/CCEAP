@@ -23,10 +23,9 @@ class ClientGui : public QMainWindow
         bool isIPAddress(QString);
 
     private slots:
-        void on_actionSend_triggered();
-        void on_commandLinkButton_clicked();
-        void on_comboBox_currentIndexChanged(int index);
-        void on_pushButton_2_clicked();
+        void sendData();
+        void seqNoTypeChanged(int index);
+        void clcearScreen();
         void dataReceived(QStringList);
 
         //Menubar actions

@@ -1,6 +1,7 @@
 #include "clientGui.h"
 #include "ui_cceap.h"
 #include "thread.h"
+#include "thread.h"
 
 #include <QProcess>
 #include <QDebug>
@@ -31,7 +32,14 @@ ClientGui::~ClientGui()
     delete ui;
 }
 
-void ClientGui::on_actionSend_triggered()
+char* ClientGui::qStringToCharPtr(QString str){
+    char*  cstr = new char[str.length()];
+    for(int i =0; i < str.length(); i++)
+        cstr[i] = str.at(i).toLatin1();
+    return cstr;
+}
+
+void ClientGui::sendData()
 {
     QString parameters="";
     QString list;
@@ -66,7 +74,11 @@ void ClientGui::on_actionSend_triggered()
 
     //parse users inputs
 
-//parse port number
+    /*Parse port number.
+     *A port number must be 4 charachters,
+     * each character must be a digit,
+     * if any of these conditions fails, use the default port number 4444.
+    */
     QString port,tmp = ui->P_lineEdit->text();
     if(tmp.length()==4 && tmp.at(0).isDigit() && tmp.at(1).isDigit() && tmp.at(3).isDigit() && tmp.at(3).isDigit())
         port=tmp;
@@ -78,15 +90,19 @@ void ClientGui::on_actionSend_triggered()
 
 
 
-//parse ip address
+    /*Parse Ip address.
+     * An ip address must be atleast 6 charaters and at most 15
+     * must contain 3 dots in which
+     * the firs and last characters are digits,
+     * a dot should not preceed another
+    */
     QString ip = ui->D_lineEdit->text();
     if(ip.length()<6)
         ip="127.0.0.1";
-
     parameters += " -D "+ip;
     list += "\n'-D'  Destination IP x to connect to: "+ip;
 
-
+    // is verbose enabled?
     if(ui->v_checkBox->isChecked()){
         parameters += " -v ";
         list += "\n'-v' verbose mode: true";
@@ -99,12 +115,14 @@ void ClientGui::on_actionSend_triggered()
     parameters += " -u "+QString::number(ui->u_spinBox->value());
     list += "\n'-u' Dummy' value in the main header: "+QString::number(ui->u_spinBox->value());
 
-
+    /*User can only use predefined sequence numbers | a starting sequence number.
+     * Users choice will then make the appropriate input visible
+    */
     if(ui->i_label->isVisible()){
         parameters += " -i "+QString::number(ui->i_spinbox->value());
         list += "\n'-i' Sequence number x to use for CCEAP: "+QString::number(ui->i_spinbox->value());
     }
-    else{
+    if(ui->s_label->isVisible()){
         parameters += " -s "+ui->s_plainTextEdit->toPlainText();
         list += "\n'-s' pre defined sequence numbers: "+ui->s_plainTextEdit->toPlainText();
     }
@@ -143,7 +161,7 @@ void ClientGui::on_actionSend_triggered()
     //parse command
     char* command = qStringToCharPtr("./client "+parameters);
 
-    //system(command);
+    system(command);
 
     /* Start a process.
      * this process is used by qt to execute an external program.
@@ -166,25 +184,12 @@ void ClientGui::on_actionSend_triggered()
     "---------------------------------------------------------------------------------------------------------------";
 
     display(result);
-
-}
-
-char* ClientGui::qStringToCharPtr(QString str){
-    char*  cstr = new char[str.length()];
-    for(int i =0; i < str.length(); i++)
-        cstr[i] = str.at(i).toLatin1();
-    return cstr;
-}
-
-void ClientGui::on_commandLinkButton_clicked()
-{
-    on_actionSend_triggered();
 }
 
 /*event handlre for changed in seqNumber options
  * this simply enables the ui cotrol corresponding to users choice
 */
-void ClientGui::on_comboBox_currentIndexChanged(int index)
+void ClientGui::seqNoTypeChanged(int index)
 {
     if(index==1){
         ui->i_spinbox->setVisible(true);
@@ -209,7 +214,7 @@ void ClientGui::on_comboBox_currentIndexChanged(int index)
 
 }
 
-void ClientGui::on_pushButton_2_clicked()
+void ClientGui::clcearScreen()
 {
 
     //clear display
@@ -259,36 +264,56 @@ void ClientGui::aboutCceap(){
     QStringList message;
     message << "The Covert Channel Educational Analysis Protocol (CCEAP)\n"
                 " is a simple network protocol designed for teaching\n"
-                "covert channels (network steganography) to professionals and students.\n"
+                "covert channels (network steganography) to professionals and students.\n\n"
                 "The protocol is explicitly vulnerable against several hiding patterns,\n"
                 "i.e. patterns that represent hiding methods (steganographic methods that\n"
                "create covert channels).The protocol's structure is simple and self-explanatory and\n"
                 "its implementation is kept at a minimum level of code lines to make it \n"
-               "especially accessible to students. The documentation of the protocol and\n"
-               " the tool can be found here. In addition, there is an academic paper available for download.\n"
-                "Please send requests and feedback to the author:Steffen Wendzel,\n "
-               "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
+               "especially accessible to students. \n";
+
+    message << "The documentation of the protocol and the tool can be found here";
+
+    message << "https://github.com/cdpxe/CCEAP/tree/master/documentation\n";
+
+    message << " In addition, there is an academic paper available for download";
+
+    message << "http://dl.acm.org/citation.cfm?id=2989037\n";
+
+    message << "Please send requests and feedback to the author:Steffen Wendzel,";
+
+    message << "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
                "steganographic/covert channel teaching in higher education is currently performed by \n"
                "Steffen Wendzel and Wojciech Mazurczyk.";
     display(message);
-    //qDebug() << message;
+
 }
 void ClientGui::developers(){
 
-    Thead *thread = new Thead();
+    QStringList message;
+    message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
+    message << "https://github.com/cdpxe/CCEAP\n";
+    message << "www.wendzel.de";
+    message << "wendzel@hs-worms.de\n";
 
-     /*This registers the slot(the gui's dataReceivedFromServer(QStringList) function)
-      * with a stringList parameter.
-      * Once the serverThread has completed its task,
-      * it will then emit a signal and return a QStringList to this gui
-      * upon emiting the signal and QStringList, the function dataReceivedFromServer(QStringList)
-      * will be called to process the result  QStringList.
-     */
-     QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
+    message << "This GUI tool has been developped as Bachelor Thesis Submitted as Partial Fulfilment \n"
+               "of the Requirements for the Degree of B.Sc.  in Applied computer science \n"
+               "at the University of applied sciences (Hochschule Worms) \n"
+               "by Feugang Kemegni Fabrice "
+               "\nSubmitted Summer, 2017\nsupervised by Prof.  Dr.  Stephen Wendzel";
+    message <<  "\nFabrice, Feugang Kemegni:\n";
+    message <<  "fabrigeas@gmail.com\n";
+    message <<  "http://fabrigeas.eu.pn/\n";
+    message <<  "https://github.com/fabrigeas/bachelor-thesis\n";
+    display(message);
 
 }
 void ClientGui::participate(){
+    QStringList message;
+    message << "Please contact Prof Wendzel to participate to CCEAP.\n";
+    message << "www.wendzel.de";
+    message << "wendzel@hs-worms.de";
 
+    display(message);
 }
 void ClientGui::help(){
     qDebug() << "help clicked";
@@ -299,6 +324,5 @@ void ClientGui::help(){
 }
 void ClientGui::dataReceived(QStringList data)
 {
-    qDebug() << "data received";
     display(data);
 }

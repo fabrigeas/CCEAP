@@ -6606,7 +6606,7 @@
   </action>
   <action name="actionUndi">
    <property name="text">
-    <string>&amp;undi</string>
+    <string>&amp;undu</string>
    </property>
   </action>
   <action name="actionRedo">
