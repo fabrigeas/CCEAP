@@ -19,6 +19,7 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     ui->i_spinbox->setVisible(false);
     ui->s_label->setVisible(false);
     ui->s_plainTextEdit->setVisible(false);
+
     //validate ipaddress
     QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
     QRegExpValidator regValidator( rx, 0 );
@@ -80,8 +81,7 @@ bool ClientGui::isIPAddress(QString ipaddr)
     return true;
 }
 
-void ClientGui::initMenuBar(){
-    //Initialize the menubar
+void ClientGui::initMenuBar(){ //Initialize the menubar
     ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
     ui->menuHelp->addAction("developers", this, SLOT(developers()));
     ui->menuHelp->addAction("participate", this, SLOT(participate()));
@@ -301,10 +301,7 @@ void ClientGui::on_sendDataB_clicked()
     display(result);
 }
 
-void ClientGui::on_clearScreenB_clicked()
-{
-    clcearScreen();
-}
+void ClientGui::on_clearScreenB_clicked() { clcearScreen(); }
 
 /*event handlre for changed in seqNumber options
  * this simply enables the ui cotrol corresponding to users choice

@@ -1,4 +1,4 @@
-
+http://doc.qt.io/qtcreator/creator-keyboard-shortcuts.html
 
 #Bachelor Thesis
 

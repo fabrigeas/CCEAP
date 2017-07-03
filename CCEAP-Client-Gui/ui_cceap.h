@@ -98,7 +98,7 @@ public:
         sizePolicy.setHeightForWidth(CCEAP->sizePolicy().hasHeightForWidth());
         CCEAP->setSizePolicy(sizePolicy);
         CCEAP->setMinimumSize(QSize(800, 600));
-        CCEAP->setMaximumSize(QSize(1288, 800));
+        CCEAP->setMaximumSize(QSize(1920, 1080));
         CCEAP->setAutoFillBackground(true);
         actionNew = new QAction(CCEAP);
         actionNew->setObjectName(QStringLiteral("actionNew"));
@@ -506,11 +506,11 @@ public:
         palette5.setBrush(QPalette::Disabled, QPalette::ToolTipText, brush);
         listView->setPalette(palette5);
         QFont font;
-        font.setFamily(QStringLiteral("Cabin"));
-        font.setPointSize(10);
-        font.setBold(false);
+        font.setFamily(QStringLiteral("Courier 10 Pitch"));
+        font.setPointSize(11);
+        font.setBold(true);
         font.setItalic(false);
-        font.setWeight(50);
+        font.setWeight(75);
         listView->setFont(font);
         listView->setSpacing(10);
 
