@@ -66,16 +66,16 @@ static const uint qt_meta_data_ClientGui[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    1,   65,    2, 0x08 /* Private */,
-       4,    1,   68,    2, 0x08 /* Private */,
-       5,    0,   71,    2, 0x08 /* Private */,
-       6,    0,   72,    2, 0x08 /* Private */,
-       7,    0,   73,    2, 0x08 /* Private */,
-       8,    0,   74,    2, 0x08 /* Private */,
-       9,    0,   75,    2, 0x08 /* Private */,
-      10,    0,   76,    2, 0x08 /* Private */,
-      11,    1,   77,    2, 0x08 /* Private */,
+       1,    0,   64,    2, 0x0a /* Public */,
+       3,    1,   65,    2, 0x0a /* Public */,
+       4,    1,   68,    2, 0x0a /* Public */,
+       5,    0,   71,    2, 0x0a /* Public */,
+       6,    0,   72,    2, 0x0a /* Public */,
+       7,    0,   73,    2, 0x0a /* Public */,
+       8,    0,   74,    2, 0x0a /* Public */,
+       9,    0,   75,    2, 0x0a /* Public */,
+      10,    0,   76,    2, 0x0a /* Public */,
+      11,    1,   77,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,

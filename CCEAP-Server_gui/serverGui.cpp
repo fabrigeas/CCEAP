@@ -25,20 +25,10 @@ ServerGui::ServerGui(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
     //welcome text that appears when server ui starts.
     //uses a stringlist so as to format each item to be clickable.
     QStringList List;
-    List << ""
-            "CCEAP protocol implementation. Copyright (C) 2016 Steffen Wendzel\n"
-            "This program comes with ABSOLUTELY NO WARRANTY; for details see LICENSE file.\n"
-            "This is free software, and you are welcome to redistribute it under certain conditions;\n"
-            "for details see LICENSE file.\n"
-            "CCEAP - Covert Channel Educational Analysis Protocol (Server)\n"
-            "=> version: 0.5.2, written by: Steffen Wendzel, www.wendzel.de\n"
-            "\n"
-            "start the server to begin an analysis session:";
-
-    //assigng the string list to the model and assign the model to the listview.
-    //This is all that is required to display the hello world page.
     model->setStringList(List);
     ui->listView->setModel(model);
+
+    execute("./server");
 
 }
 
@@ -48,41 +38,34 @@ ServerGui::~ServerGui()
 }
 
 //This is the handle for the button 'start server'.
+/*This handler instantiates the server thread.
+* and registers a handler so that the serveThread can then emit a signal back to the
+* gui once it has completed its task.
+* The serverThread just executes the cceap-server with th port provided by the client.
+* if client does not provide a port, a default port 4444 is used.*/
+//clear display
 void ServerGui::on_startServerButton_clicked()
 {
-    //clear display
-    stringList.clear();
 
-    /*This handler instantiates the server thread.
-     * and registers a handler so that the serveThread can then emit a signal back to the
-     * gui once it has completed its task.
-    The serverThread just executes the cceap-server with th port provided by the client.
-    if client does not provide a port, a default port 4444 is used.
+    QString port = ui->port_lineEdit->text();
+    QStringList list;
+    if(port.length()==4 && port.at(0).isDigit()&&port.at(1).isDigit()&&port.at(2).isDigit()&&port.at(3).isDigit())
+        list << "server started on port: "+port+""
+                                                "\nwaiting for clients ...";
+    else
+        list << "Error !! The port number that you have provided is invalid.\n"
+             "please check it.\n";
+    display(list);
 
-The server thread runs the server in background, waiting for any client connection.
-After receiving and processing a clients connection, the cceap returns a string to the serverThread,
-the serverThread then parses the returned string to the cceap gui in the form of a stringList that will
-be placed on the ListView.*/
-    ServerThread *serverThread = new ServerThread(ui->port_lineEdit->text());
+    QString command = "./server -P "+port;
+    qDebug() << command;
 
-    /*This registers the slot(the gui's dataReceivedFromServer(QStringList) function)
-     * with a stringList parameter.
-     * Once the serverThread has completed its task,
-     * it will then emit a signal and return a QStringList to this gui
-     * upon emiting the signal and QStringList, the function dataReceivedFromServer(QStringList)
-     * will be called to process the result  QStringList.
-    */
-    QObject::connect(serverThread,SIGNAL(signal(QStringList)),this, SLOT(dataReceivedFromServer(QStringList)));
-
-    //start the serverThread in background
-    serverThread->start();
-
+    execute(command);
 }
 
 //This slot is called automatically when the serverThread emits its signal
 void ServerGui::dataReceivedFromServer(QStringList list)
 {
-
 
     /*The stringList returned by the thread is already formated,
      * so this gui only needs to display it in its listview.
@@ -101,7 +84,9 @@ QString ServerGui::getLocalIP(){
              return address.toString();
     return "127.0.0.1";
 }
+
 void ServerGui::display(QString data){
+    clear();
     QStringList result;
     result.clear();
     result << data;
@@ -110,7 +95,6 @@ void ServerGui::display(QString data){
     ui->listView->scrollToBottom();
     ui->listView->update();
 }
-
 void ServerGui::display(QStringList data){
     QStringList result;
     result.clear();
@@ -119,7 +103,6 @@ void ServerGui::display(QStringList data){
     ui->listView->scrollToBottom();
     ui->listView->update();
 }
-
 void ServerGui::initMenuBar(){
     //Initialize the menubar
     ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
@@ -148,7 +131,7 @@ void ServerGui::aboutCceap(){
 
     message << "Please send requests and feedback to the author:Steffen Wendzel,";
 
-    message << "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
+    message << "www.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
                "steganographic/covert channel teaching in higher education is currently performed by \n"
                "Steffen Wendzel and Wojciech Mazurczyk.";
     display(message);
@@ -183,7 +166,19 @@ void ServerGui::participate(){
     display(message);
 }
 void ServerGui::help(){
-//    ServerThread *thread = new Thead("./client -h");
-//    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
-//    thread->start();;
+    execute("./server -h");
+}
+void ServerGui::execute(QString command){
+
+    stringList.clear();
+    ServerThread *serverThread = new ServerThread(command);
+    QObject::connect(serverThread,SIGNAL(signal(QStringList)),this, SLOT(dataReceivedFromServer(QStringList)));
+    serverThread->start();
+}
+void ServerGui::clear(){
+    stringList.clear();
+    model->setStringList(stringList);
+    ui->listView->setModel(model);
+    ui->listView->scrollToBottom();
+    ui->listView->update();
 }

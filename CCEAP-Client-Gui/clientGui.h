@@ -20,6 +20,7 @@ class ClientGui : public QMainWindow
         void display(QString);
         void display(QStringList);
         void initMenuBar();
+        void execute(QString);
 
         bool isIPAddress(QString);
 

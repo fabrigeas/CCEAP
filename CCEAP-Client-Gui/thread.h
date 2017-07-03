@@ -15,15 +15,14 @@ class Thead : public QThread
     Q_OBJECT
     public:
         explicit Thead();
-        explicit Thead(QString data);
+        explicit Thead(QString);
         void run();
 
     signals:
         void signal(QStringList);
 
     private:
-        QStringListModel *model;
-        QString cmd;
+        QString command;
 
 };
 

@@ -25,7 +25,7 @@ class ServerThread : public QThread
     private:
         Ui::CCEAP *uui;
         QStringListModel *model;
-        QString port;
+        QString command;
 };
 
 #endif // MYTHREAD_H

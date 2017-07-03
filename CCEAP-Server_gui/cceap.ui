@@ -12,8 +12,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>1280</width>
-    <height>960</height>
+    <width>1920</width>
+    <height>1080</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -48,16 +48,22 @@
        </item>
        <item>
         <widget class="QLineEdit" name="port_lineEdit">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;port number must be given to be able to start server.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string/>
          </property>
          <property name="placeholderText">
-          <string>default port is 4444</string>
+          <string>port number (requied)</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QCommandLinkButton" name="startServerButton">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;click to start listening.&lt;/p&gt;&lt;p&gt;port number is required&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="text">
           <string>start server</string>
          </property>
@@ -88,6 +94,12 @@
       </property>
       <property name="spacing">
        <number>12</number>
+      </property>
+      <property name="uniformItemSizes">
+       <bool>true</bool>
+      </property>
+      <property name="batchSize">
+       <number>2</number>
       </property>
      </widget>
     </item>

@@ -10,13 +10,14 @@
 
 
 
-ServerThread::ServerThread(QString p):port(p) {}
+ServerThread::ServerThread(QString p):command(p) {}
 
 void ServerThread::run()
 {
 
     QStringList list;
 
+    /*
     //veryfy that port number is valid, if not use defaul port number
     if(port.length()==4 && port.at(0).isDigit()&&port.at(1).isDigit()&&port.at(2).isDigit()&&port.at(3).isDigit()){
         list << "server started on port: "+port;
@@ -31,7 +32,8 @@ void ServerThread::run()
     }
 
     emit signal(list);
-    qDebug() << list;
+    */
+
 
     /*QProcess is used to execute an external program.
      * An alternative would be using a system call,
@@ -43,7 +45,7 @@ void ServerThread::run()
     */
 
     QProcess cceapServer;
-    cceapServer.start("./server -P "+port);
+    cceapServer.start(command);
 
     //forces this.Thead to wait for output of cceapServer
     cceapServer.waitForFinished(-1);
@@ -55,8 +57,6 @@ void ServerThread::run()
     */
     QString stdout = cceapServer.readAllStandardOutput();
     //QString stderror = cceapServer.readAllStandardOutput();
-
-    qDebug() << "stdout: "+stdout.length() << stdout;
 
 
     /*The output of cceapServer is a string, howver the GUI needs alist of packets

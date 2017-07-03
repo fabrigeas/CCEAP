@@ -1103,6 +1103,9 @@ public:
         label->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>Destination IP x to connect to</p><p><br/></p></body></html>", 0));
 #endif // QT_NO_TOOLTIP
         label->setText(QApplication::translate("CCEAP", "ip address", 0));
+#ifndef QT_NO_TOOLTIP
+        D_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>enter the ip address of the server. If the client and server are running on the same computer, use 127.0.0.1, otherwise obtain the server's ip from the Server-GUI</p><p><br/></p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         D_lineEdit->setText(QString());
         D_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "enter server's ip address. Default 127.0.0.1", 0));
         label_2->setText(QApplication::translate("CCEAP", "port", 0));

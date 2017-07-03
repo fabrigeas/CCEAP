@@ -57,7 +57,7 @@ public:
         if (CCEAP->objectName().isEmpty())
             CCEAP->setObjectName(QStringLiteral("CCEAP"));
         CCEAP->resize(800, 600);
-        CCEAP->setMaximumSize(QSize(1280, 960));
+        CCEAP->setMaximumSize(QSize(1920, 1080));
         actionImport = new QAction(CCEAP);
         actionImport->setObjectName(QStringLiteral("actionImport"));
         actionExport = new QAction(CCEAP);
@@ -114,6 +114,8 @@ public:
         listView->setLineWidth(1);
         listView->setAutoScrollMargin(16);
         listView->setSpacing(12);
+        listView->setUniformItemSizes(true);
+        listView->setBatchSize(2);
 
         gridLayout->addWidget(listView, 1, 1, 1, 2);
 
@@ -161,8 +163,14 @@ public:
 #endif // QT_NO_TOOLTIP
         ip_lineEdit->setText(QString());
         ip_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "default is: 127.0.0.1", 0));
+#ifndef QT_NO_TOOLTIP
+        port_lineEdit->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>port number must be given to be able to start server.</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         port_lineEdit->setText(QString());
-        port_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "default port is 4444", 0));
+        port_lineEdit->setPlaceholderText(QApplication::translate("CCEAP", "port number (requied)", 0));
+#ifndef QT_NO_TOOLTIP
+        startServerButton->setToolTip(QApplication::translate("CCEAP", "<html><head/><body><p>click to start listening.</p><p>port number is required</p></body></html>", 0));
+#endif // QT_NO_TOOLTIP
         startServerButton->setText(QApplication::translate("CCEAP", "start server", 0));
         menuFile->setTitle(QApplication::translate("CCEAP", "File", 0));
         menuEdit->setTitle(QApplication::translate("CCEAP", "Edit", 0));

@@ -18,6 +18,8 @@ class ServerGui : public QMainWindow
         void display(QString);
         void display(QStringList);
         void initMenuBar();
+        void execute(QString);
+        void clear();
 
 
     public slots:

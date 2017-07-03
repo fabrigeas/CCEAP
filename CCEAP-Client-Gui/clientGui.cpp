@@ -25,6 +25,9 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     QRegExpValidator regValidator( rx, 0 );
     ui->D_lineEdit->setValidator( &regValidator );
 
+    QString command ="./client";
+    qDebug() << command;
+    execute(command);
 
 
 }
@@ -32,6 +35,12 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
 ClientGui::~ClientGui()
 {
     delete ui;
+}
+
+void ClientGui::execute(QString command){
+    Thead *thread = new Thead(command);
+    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parseData(QStringList)));
+    thread->start();
 }
 
 char* ClientGui::qStringToCharPtr(QString str){
@@ -276,9 +285,7 @@ void ClientGui::on_sendDataB_clicked()
     //parse command
     char* command = qStringToCharPtr("./client "+parameters);
 
-    Thead *thread = new Thead(command);
-    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parseData(QStringList)));
-    thread->start();;
+    execute(command);
 
 
     /* Start a process.
@@ -329,7 +336,6 @@ void ClientGui::on_seqNoType_currentIndexChanged(int index)
         ui->s_label->setVisible(false);
     }
 }
-
 void ClientGui::parseData(QStringList data){
     display(data);
 }

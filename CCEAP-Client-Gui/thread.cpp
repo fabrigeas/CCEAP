@@ -11,7 +11,7 @@
 
 
 Thead::Thead(){}
-Thead::Thead(QString data):cmd(data){}
+Thead::Thead(QString data):command(data){}
 
 void Thead::run()
 {
@@ -27,9 +27,8 @@ void Thead::run()
      * This is required because we need to process the output of the cceapServer.
     */
 
-    //cmd = "./client -h ";
     QProcess thread;
-    thread.start(cmd);
+    thread.start(command);
 
     //forces this.Thead to wait for output of cceapServer
     thread.waitForFinished(-1);

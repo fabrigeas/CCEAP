@@ -884,6 +884,9 @@
     </item>
     <item row="0" column="1" colspan="4">
      <widget class="QLineEdit" name="D_lineEdit">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;enter the ip address of the server. If the client and server are running on the same computer, use 127.0.0.1, otherwise obtain the server's ip from the Server-GUI&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -1320,7 +1323,7 @@
        <bool>true</bool>
       </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TCP port x to connect to&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TCP port number of the server to connect to. This field must be entered, otherwise no packet will be sent.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -1776,7 +1779,11 @@
      </widget>
     </item>
     <item row="4" column="3" colspan="2">
-     <widget class="QSpinBox" name="i_spinbox"/>
+     <widget class="QSpinBox" name="i_spinbox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Enter a number her for starting sequence number, each subsequent packet gets the sequence number +1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0" colspan="3">
      <widget class="QLabel" name="c_label">
@@ -2205,6 +2212,9 @@
     </item>
     <item row="1" column="3" colspan="2">
      <widget class="QSpinBox" name="c_spinBox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;number of packets to send. (default = 10)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="minimum">
        <number>0</number>
       </property>
@@ -2215,6 +2225,9 @@
     </item>
     <item row="6" column="3" colspan="2">
      <widget class="QPlainTextEdit" name="s_plainTextEdit">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;You can specify the list of sequence numbers instead of the default autoincrement.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="placeholderText">
        <string>eg. 1,2,3,..n</string>
       </property>
@@ -3512,7 +3525,11 @@
      </widget>
     </item>
     <item row="9" column="3" colspan="2">
-     <widget class="QSpinBox" name="p_spinBox"/>
+     <widget class="QSpinBox" name="p_spinBox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specify the sequence numbers of packets that you want to duplicate&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </item>
     <item row="6" column="0" colspan="3">
      <widget class="QLabel" name="s_label">
@@ -3944,6 +3961,9 @@
     </item>
     <item row="11" column="2" colspan="3">
      <widget class="QLineEdit" name="o_lineEdit">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;optional header parameters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="placeholderText">
        <string>eg. for a string with 3 options: '1,2,3/4,5,6/7,8,9'</string>
       </property>
@@ -4810,7 +4830,11 @@
      </widget>
     </item>
     <item row="10" column="3" colspan="2">
-     <widget class="QSpinBox" name="x_spinBox"/>
+     <widget class="QSpinBox" name="x_spinBox">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Specify the sequence numbers of packets that you want to exclude&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </item>
     <item row="9" column="0" colspan="3">
      <widget class="QLabel" name="p_label">
@@ -5664,6 +5688,9 @@
     </item>
     <item row="13" column="2" colspan="2">
      <widget class="QPushButton" name="clearScreenB">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;click here to clear the screen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>reset</string>
       </property>
@@ -6510,6 +6537,9 @@
          </colorrole>
         </disabled>
        </palette>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Click here to connect to the server and send the packets.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string>send</string>
