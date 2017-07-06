@@ -1,13 +1,1 @@
-The Covert Channel Educational Analysis Protocol (CCEAP) 
-is a simple network protocol designed for teaching 
-covert channels (network steganography) to professionals and students.
-
-The protocol is explicitly vulnerable against several hiding patterns,
- i.e. patterns that represent hiding methods (steganographic methods that create covert channels).
-  The protocol's structure is simple and self-explanatory and
-   its implementation is kept at a minimum level of code lines to make it especially accessible to students. 
-   The documentation of the protocol and the tool can be found here. In addition, there is an academic paper available for download.
-
-Please send requests and feedback to the author:
- Steffen Wendzel, www.wendzel.de (wendzel (at) hs-worms (dot) de). 
- Research on steganographic/covert channel teaching in higher education is currently performed by Steffen Wendzel and Wojciech Mazurczyk.
+The figures below show the outputs of the GUI programs when users enter the required parameters through the UI controls. Figure 9 shows the server GUI when the user enters a port number and clicks on start server. If the user enters an invalid port number, an error message is displayed providing explanations about the error. Figure 10 shows the output of the client GUI when user enters required parameters. Figure 11 show the output of the server after receiving an incoming client connection, the output of the cceap-server is then displayed to the user but this time in a parsed manner so that the user has the ability to click on each received packets and the packets options. As compared to using the cceap as command line, the GUI delimit each packet such that each is remarkable from the other, this facilitates analysis.
