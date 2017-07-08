@@ -2659,7 +2659,19 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="autoScrollMargin">
+       <number>16</number>
+      </property>
+      <property name="movement">
+       <enum>QListView::Free</enum>
+      </property>
+      <property name="layoutMode">
+       <enum>QListView::Batched</enum>
+      </property>
       <property name="spacing">
+       <number>10</number>
+      </property>
+      <property name="batchSize">
        <number>10</number>
       </property>
      </widget>
@@ -6576,7 +6588,7 @@
      <x>0</x>
      <y>0</y>
      <width>1288</width>
-     <height>19</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFILE">

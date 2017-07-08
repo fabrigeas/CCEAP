@@ -25,7 +25,7 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     QRegExpValidator regValidator( rx, 0 );
     ui->D_lineEdit->setValidator( &regValidator );
 
-    QString command ="./client";
+    QString command ="./client -h";
     qDebug() << command;
     execute(command);
 
@@ -69,6 +69,8 @@ void ClientGui::display(QString data){
     model->setStringList(result);
     ui->listView->setModel(model);
     ui->listView->scrollToBottom();
+    ui->listView->scrollToTop();
+
     ui->listView->update();
 }
 
