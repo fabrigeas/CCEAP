@@ -73,6 +73,7 @@ void ServerThread::run()
     list = std_out.split(rx);
 
     qDebug() << command;
+    qDebug() << list;
 
     //return tha processed data(StringList) to the GUI then exit
     emit signal(list);

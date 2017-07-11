@@ -99,22 +99,17 @@ void ClientGui::clcearScreen()
  * the listview
 */
 void ClientGui::display(QString data){
-
-    result.clear();
     result << data;
     model->setStringList(result);
     ui->listView->setModel(model);
-    ui->listView->scrollToBottom();
-    ui->listView->scrollToTop();
+    //ui->listView->scrollToBottom();
     ui->listView->update();
 }
 
 void ClientGui::display(QStringList data){
-
-    result.clear();
     model->setStringList(data);
     ui->listView->setModel(model);
-    ui->listView->scrollToBottom();
+    //ui->listView->scrollToBottom();
     ui->listView->update();
 }
 
@@ -157,7 +152,7 @@ void ClientGui::aboutCceapMenuBarHandler(){
 
     message << "Please send requests and feedback to the author:Steffen Wendzel,";
 
-    message << "\mwww.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
+    message << "\www.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
                "steganographic/covert channel teaching in higher education is currently performed by \n"
                "Steffen Wendzel and Wojciech Mazurczyk.";
     display(message);
