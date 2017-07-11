@@ -56,7 +56,7 @@ void ServerGui::on_startServerButton_clicked()
              "please check it.\n";
     display(list);
 
-    execute(" -p "+port);
+    execute(" -P "+port);
 }
 
 /** This slot is called automatically when the serverThread emits its signal*/
