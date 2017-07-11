@@ -15,7 +15,7 @@ Thead::Thead(QString data):command(data){}
 
 void Thead::run()
 {
-    qDebug() << "thread running";
+    qDebug() << command;
     QStringList list;
 
     /*QProcess is used to execute an external program.

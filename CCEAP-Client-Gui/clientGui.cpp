@@ -9,7 +9,6 @@
 ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
 {
     //init the gui
-
     ui->setupUi(this);
     initMenuBar();
 
@@ -25,11 +24,22 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     QRegExpValidator regValidator( rx, 0 );
     ui->D_lineEdit->setValidator( &regValidator );
 
-    QString command ="./client -h";
-    qDebug() << command;
+
+    QString command = "./client -h";
+
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start client.exe -h ";
+        qDebug() << "running on Windows!";
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./client -h ";
+        qDebug() << runninng on Linux!";
+    #else
+        command = "./client -h ";
+        qDebug() << runninng on Linux!";
+
+    #endif
     execute(command);
-
-
 }
 
 ClientGui::~ClientGui()
@@ -38,6 +48,11 @@ ClientGui::~ClientGui()
 }
 
 void ClientGui::execute(QString command){
+    Thead *thread = new Thead(command);
+    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
+    thread->start();
+}
+void ClientGui::executeParse(QString command){
     Thead *thread = new Thead(command);
     QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parseData(QStringList)));
     thread->start();
@@ -49,7 +64,6 @@ char* ClientGui::qStringToCharPtr(QString str){
         cstr[i] = str.at(i).toLatin1();
     return cstr;
 }
-
 
 void ClientGui::clcearScreen()
 {
@@ -70,7 +84,6 @@ void ClientGui::display(QString data){
     ui->listView->setModel(model);
     ui->listView->scrollToBottom();
     ui->listView->scrollToTop();
-
     ui->listView->update();
 }
 
@@ -154,9 +167,23 @@ void ClientGui::participate(){
     display(message);
 }
 void ClientGui::help(){
-    Thead *thread = new Thead("./client -h");
-    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
-    thread->start();;
+    QString command = "./client -h";
+
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start client.exe -h ";
+        qDebug() << "running on Windows!";
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./client -P ";
+        qDebug() << runninng on Linux!";
+    #else
+        command = "./client -P ";
+        qDebug() << runninng on Linux!";
+
+    #endif
+
+    execute(command);
+
 }
 void ClientGui::dataReceived(QStringList data)
 {
@@ -212,9 +239,6 @@ void ClientGui::on_sendDataB_clicked()
         port= "4444";
     parameters += " -P "+port;
     list += "\n'-P' TCP port x to connect to: "+port;
-
-
-
 
     /*Parse Ip address.
      * An ip address must be atleast 6 charaters and at most 15
@@ -285,9 +309,18 @@ void ClientGui::on_sendDataB_clicked()
 
 
     //parse command
-    char* command = qStringToCharPtr("./client "+parameters);
+    char* command;
 
-    execute(command);
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = qStringToCharPtr("start client.exe "+parameters);
+    #elif (defined (LINUX) || defined (__linux__))
+        command = qStringToCharPtr("./client "+parameters);
+    #else
+        command = qStringToCharPtr("./client "+parameters);
+    #endif
+
+    executeParse(command);
 
 
     /* Start a process.
