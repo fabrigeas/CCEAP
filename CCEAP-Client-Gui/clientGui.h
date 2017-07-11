@@ -27,14 +27,14 @@ class ClientGui : public QMainWindow
 
     public slots:
         void clcearScreen();
-        void dataReceived(QStringList);
-        void parseData(QStringList);
+        void dataReceivedSlot(QStringList);
+        void parsedDataReceivedSlot(QStringList);
 
         //Menubar actions
-        void aboutCceap();
-        void developers();
-        void participate();
-        void help();
+        void aboutCceapMenuBarHandler();
+        void developersMenuBarHandler();
+        void participateMenuBarHandler();
+        void helpMenuBarHandler();
 
         void on_sendDataB_clicked();
 

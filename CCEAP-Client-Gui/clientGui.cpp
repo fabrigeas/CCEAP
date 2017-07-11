@@ -30,14 +30,10 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     // determine if the architecture is windows or unix, then run the approptiate command
     #if (defined (_WIN32) || defined (_WIN64))
         command = "start client.exe -h ";
-        qDebug() << "running on Windows!";
     #elif (defined (LINUX) || defined (__linux__))
         command = "./client -h ";
-        qDebug() << runninng on Linux!";
     #else
         command = "./client -h ";
-        qDebug() << runninng on Linux!";
-
     #endif
     execute(command);
 }
@@ -47,17 +43,31 @@ ClientGui::~ClientGui()
     delete ui;
 }
 
+/** simply runs a command and display the data to user
+ * the output of the cceap cleant is not parsed as compared to
+ * execute parsed which starts the client thread but
+ * the output of the client thread is passed to a string parser
+ *
+*/
 void ClientGui::execute(QString command){
     Thead *thread = new Thead(command);
-    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceived(QStringList)));
-    thread->start();
-}
-void ClientGui::executeParse(QString command){
-    Thead *thread = new Thead(command);
-    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parseData(QStringList)));
+    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceivedSlot(QStringList)));
     thread->start();
 }
 
+/** Starts the client thread and parses the client's
+ * output for better display.
+*/
+void ClientGui::executeParse(QString command){
+    Thead *thread = new Thead(command);
+    QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parsedDataReceivedSlot(QStringList)));
+    thread->start();
+}
+
+/** function that conversts a string to char*
+ * this function is required because processes are s
+ * started with char * parameters instead of strings
+*/
 char* ClientGui::qStringToCharPtr(QString str){
     char*  cstr = new char[str.length()];
     for(int i =0; i < str.length(); i++)
@@ -76,6 +86,9 @@ void ClientGui::clcearScreen()
     ui->listView->update();
 }
 
+/** displays the output to client by updating
+ * the listview
+*/
 void ClientGui::display(QString data){
 
     result.clear();
@@ -106,12 +119,14 @@ bool ClientGui::isIPAddress(QString ipaddr)
 }
 
 void ClientGui::initMenuBar(){ //Initialize the menubar
-    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
-    ui->menuHelp->addAction("developers", this, SLOT(developers()));
-    ui->menuHelp->addAction("participate", this, SLOT(participate()));
-    ui->menuHelp->addAction("help", this, SLOT(help()));
+    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceapMenuBarHandler()));
+    ui->menuHelp->addAction("developers", this, SLOT(developersMenuBarHandler()));
+    ui->menuHelp->addAction("participate", this, SLOT(participateMenuBarHandler()));
+    ui->menuHelp->addAction("help", this, SLOT(helpMenuBarHandler()));
 }
-void ClientGui::aboutCceap(){
+
+/** Menubar Handler for help*/
+void ClientGui::aboutCceapMenuBarHandler(){
     QStringList message;
     message << "The Covert Channel Educational Analysis Protocol (CCEAP)\n"
                 " is a simple network protocol designed for teaching\n"
@@ -138,7 +153,7 @@ void ClientGui::aboutCceap(){
     display(message);
 
 }
-void ClientGui::developers(){
+void ClientGui::developersMenuBarHandler(){
 
     QStringList message;
     message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
@@ -158,7 +173,7 @@ void ClientGui::developers(){
     display(message);
 
 }
-void ClientGui::participate(){
+void ClientGui::participateMenuBarHandler(){
     QStringList message;
     message << "Please contact Prof Wendzel to participate to CCEAP.\n";
     message << "www.wendzel.de";
@@ -166,30 +181,28 @@ void ClientGui::participate(){
 
     display(message);
 }
-void ClientGui::help(){
+void ClientGui::helpMenuBarHandler(){
     QString command = "./client -h";
 
     // determine if the architecture is windows or unix, then run the approptiate command
     #if (defined (_WIN32) || defined (_WIN64))
         command = "start client.exe -h ";
-        qDebug() << "running on Windows!";
     #elif (defined (LINUX) || defined (__linux__))
         command = "./client -P ";
-        qDebug() << runninng on Linux!";
     #else
         command = "./client -P ";
-        qDebug() << runninng on Linux!";
 
     #endif
 
     execute(command);
 
 }
-void ClientGui::dataReceived(QStringList data)
-{
+
+void ClientGui::dataReceivedSlot(QStringList data){display(data);}
+
+void ClientGui::parsedDataReceivedSlot(QStringList data){
     display(data);
 }
-
 
 void ClientGui::on_sendDataB_clicked()
 {
@@ -370,7 +383,4 @@ void ClientGui::on_seqNoType_currentIndexChanged(int index)
         ui->i_label->setVisible(false);
         ui->s_label->setVisible(false);
     }
-}
-void ClientGui::parseData(QStringList data){
-    display(data);
 }
