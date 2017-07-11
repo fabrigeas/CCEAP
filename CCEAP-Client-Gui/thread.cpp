@@ -40,6 +40,5 @@ void Thead::run()
     //return tha processed data(StringList) to the GUI then exit
     emit signal(list);
 
-
 }
 
