@@ -57,8 +57,28 @@ void ServerGui::on_startServerButton_clicked()
              "please check it.\n";
     display(list);
 
-    QString command = "./server -P "+port;
-    qDebug() << command;
+    QString command;
+
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start -P "+port;
+        qDebug() << "running on Windows!";
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./server.exe -P "+port;
+        qDebug() << runninng on Linux!";
+    #else
+        command = "./server -P "+port;
+        qDebug() << runninng on Linux!";
+
+    #endif
+
+
+//    #if (defined (_WIN32) || defined (_WIN64))
+//        command = "start -P "+port;
+//    #endif
+//    #if (defined (LINUX) || defined (__linux__))
+//        command = "./server -P "+port;
+//    #endif
 
     execute(command);
 }

@@ -55,8 +55,9 @@ void ServerThread::run()
      * are returned in 'readAllStandardOutput'
      * so no need to read both of them
     */
-    QString stdout = cceapServer.readAllStandardOutput();
-    //QString stderror = cceapServer.readAllStandardOutput();
+
+    QString std_out = cceapServer.readAllStandardOutput();
+    QString std_err = cceapServer.readAllStandardOutput();
 
 
     /*The output of cceapServer is a string, howver the GUI needs alist of packets
@@ -66,8 +67,12 @@ void ServerThread::run()
      * so we use such pattern as delimiter to split the String into an String list
      *
     */
+
+
     QRegExp rx("received");
-    list = stdout.split(rx);
+    list = std_out.split(rx);
+
+    qDebug() << list;
 
 
     //return tha processed data(StringList) to the GUI then exit
