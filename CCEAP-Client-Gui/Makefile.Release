@@ -507,10 +507,7 @@ release/main.o: main.cpp clientGui.h \
 		C:/Qt/5.9.1/mingw53_32/include/QtCore/qeventloop.h \
 		C:/Qt/5.9.1/mingw53_32/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.9.1/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/5.9.1/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/5.9.1/mingw53_32/include/QtCore/QProcess \
-		C:/Qt/5.9.1/mingw53_32/include/QtCore/qprocess.h \
-		C:/Qt/5.9.1/mingw53_32/include/QtCore/QDebug
+		C:/Qt/5.9.1/mingw53_32/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/clientGui.o: clientGui.cpp clientGui.h \

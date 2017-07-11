@@ -24,18 +24,7 @@ ClientGui::ClientGui(QWidget *parent) :QMainWindow(parent),ui(new Ui::CCEAP)
     QRegExpValidator regValidator( rx, 0 );
     ui->D_lineEdit->setValidator( &regValidator );
 
-
-    QString command = "./client -h";
-
-    // determine if the architecture is windows or unix, then run the approptiate command
-    #if (defined (_WIN32) || defined (_WIN64))
-        command = "start client.exe -h ";
-    #elif (defined (LINUX) || defined (__linux__))
-        command = "./client -h ";
-    #else
-        command = "./client -h ";
-    #endif
-    execute(command);
+    execute(" -h ");
 }
 
 ClientGui::~ClientGui()
@@ -49,7 +38,18 @@ ClientGui::~ClientGui()
  * the output of the client thread is passed to a string parser
  *
 */
-void ClientGui::execute(QString command){
+void ClientGui::execute(QString parameters){
+
+    QString command = "./client ";
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start client.exe "+parameters;
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./client "+parameters;
+    #else
+        command = "./client "+parameters;
+    #endif
+
     Thead *thread = new Thead(command);
     QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(dataReceivedSlot(QStringList)));
     thread->start();
@@ -58,7 +58,17 @@ void ClientGui::execute(QString command){
 /** Starts the client thread and parses the client's
  * output for better display.
 */
-void ClientGui::executeParse(QString command){
+void ClientGui::executeParse(QString parameters){
+    QString command ="./client ";
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start client.exe "+parameters;
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./client "+parameters;
+    #else
+        command = "./client "+parameters;
+    #endif
+
     Thead *thread = new Thead(command);
     QObject::connect(thread,SIGNAL(signal(QStringList)),this, SLOT(parsedDataReceivedSlot(QStringList)));
     thread->start();
@@ -77,7 +87,6 @@ char* ClientGui::qStringToCharPtr(QString str){
 
 void ClientGui::clcearScreen()
 {
-
     //clear display
     result.clear();
     model->setStringList(result);
@@ -114,11 +123,12 @@ bool ClientGui::isIPAddress(QString ipaddr)
     qDebug() <<ipaddr;
     QRegExp rx( "[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}" );
     QRegExpValidator regValidator( rx, 0 );
-
     return true;
 }
 
-void ClientGui::initMenuBar(){ //Initialize the menubar
+/** Insert MenuBar Items */
+void ClientGui::initMenuBar(){
+
     ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceapMenuBarHandler()));
     ui->menuHelp->addAction("developers", this, SLOT(developersMenuBarHandler()));
     ui->menuHelp->addAction("participate", this, SLOT(participateMenuBarHandler()));
@@ -181,35 +191,22 @@ void ClientGui::participateMenuBarHandler(){
 
     display(message);
 }
-void ClientGui::helpMenuBarHandler(){
-    QString command = "./client -h";
+void ClientGui::helpMenuBarHandler(){execute("-h");}
 
-    // determine if the architecture is windows or unix, then run the approptiate command
-    #if (defined (_WIN32) || defined (_WIN64))
-        command = "start client.exe -h ";
-    #elif (defined (LINUX) || defined (__linux__))
-        command = "./client -P ";
-    #else
-        command = "./client -P ";
-
-    #endif
-
-    execute(command);
-
-}
-
+/** slots to handle signals from thread
+ * as compared to dataReceivedSlot, parsedataReceivedSlot
+ * parses the threads output to dispay output in a clickable fashion
+ * enabling the user to click on specific output portions
+ * dataReceivedSlot simply displays the output a s a string
+*/
 void ClientGui::dataReceivedSlot(QStringList data){display(data);}
-
-void ClientGui::parsedDataReceivedSlot(QStringList data){
-    display(data);
-}
+void ClientGui::parsedDataReceivedSlot(QStringList data){display(data);}
 
 void ClientGui::on_sendDataB_clicked()
 {
 
     QString parameters="";
     QString list;
-
     QString temp;
 
     /*
@@ -320,32 +317,7 @@ void ClientGui::on_sendDataB_clicked()
         list += "\n'-o' Optional header elements: "+temp;
     }
 
-
-    //parse command
-    char* command;
-
-    // determine if the architecture is windows or unix, then run the approptiate command
-    #if (defined (_WIN32) || defined (_WIN64))
-        command = qStringToCharPtr("start client.exe "+parameters);
-    #elif (defined (LINUX) || defined (__linux__))
-        command = qStringToCharPtr("./client "+parameters);
-    #else
-        command = qStringToCharPtr("./client "+parameters);
-    #endif
-
-    executeParse(command);
-
-
-    /* Start a process.
-     * this process is used by qt to execute an external program.
-     * use waitForFinished to force this thread to wait for clientProcess
-     * to return before proceeding
-    */
-    /*
-    QProcess clientProcess;
-    clientProcess.start(command);
-    clientProcess.waitForFinished(-1);*/
-
+    executeParse(parameters);
 
     //display program's output in a formated layout, separating each output with a horizontal line
     result <<  "\n"+parameters+
