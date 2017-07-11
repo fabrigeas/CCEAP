@@ -72,8 +72,7 @@ void ServerThread::run()
     QRegExp rx("received");
     list = std_out.split(rx);
 
-    qDebug() << list;
-
+    qDebug() << command;
 
     //return tha processed data(StringList) to the GUI then exit
     emit signal(list);

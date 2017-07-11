@@ -28,8 +28,7 @@ ServerGui::ServerGui(QWidget *parent) : QMainWindow(parent), ui(new Ui::CCEAP)
     model->setStringList(List);
     ui->listView->setModel(model);
 
-    execute("./server");
-
+    execute("-h");
 }
 
 ServerGui::~ServerGui()
@@ -57,37 +56,14 @@ void ServerGui::on_startServerButton_clicked()
              "please check it.\n";
     display(list);
 
-    QString command;
-
-    // determine if the architecture is windows or unix, then run the approptiate command
-    #if (defined (_WIN32) || defined (_WIN64))
-        command = "start -P "+port;
-        qDebug() << "running on Windows!";
-    #elif (defined (LINUX) || defined (__linux__))
-        command = "./server.exe -P "+port;
-        qDebug() << runninng on Linux!";
-    #else
-        command = "./server -P "+port;
-        qDebug() << runninng on Linux!";
-
-    #endif
-
-
-//    #if (defined (_WIN32) || defined (_WIN64))
-//        command = "start -P "+port;
-//    #endif
-//    #if (defined (LINUX) || defined (__linux__))
-//        command = "./server -P "+port;
-//    #endif
-
-    execute(command);
+    execute(" -p "+port);
 }
 
-//This slot is called automatically when the serverThread emits its signal
+/** This slot is called automatically when the serverThread emits its signal*/
 void ServerGui::dataReceivedFromServer(QStringList list)
 {
 
-    /*The stringList returned by the thread is already formated,
+    /* The stringList returned by the thread is already formated,
      * so this gui only needs to display it in its listview.
      *
     */
@@ -97,7 +73,7 @@ void ServerGui::dataReceivedFromServer(QStringList list)
     this->ui->listView->update();
 }
 
-//This returns the ip address to display to user so that they can connect with
+/** This returns the ip address to display to user so that they can connect with*/
 QString ServerGui::getLocalIP(){
     foreach (const QHostAddress &address, QNetworkInterface::allAddresses())
         if (address.protocol() == QAbstractSocket::IPv4Protocol && address != QHostAddress(QHostAddress::LocalHost))
@@ -105,6 +81,7 @@ QString ServerGui::getLocalIP(){
     return "127.0.0.1";
 }
 
+/** display a single line string*/
 void ServerGui::display(QString data){
     clear();
     QStringList result;
@@ -115,6 +92,8 @@ void ServerGui::display(QString data){
     ui->listView->scrollToBottom();
     ui->listView->update();
 }
+
+/** parse and display a string list*/
 void ServerGui::display(QStringList data){
     QStringList result;
     result.clear();
@@ -123,14 +102,15 @@ void ServerGui::display(QStringList data){
     ui->listView->scrollToBottom();
     ui->listView->update();
 }
+
 void ServerGui::initMenuBar(){
     //Initialize the menubar
-    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceap()));
-    ui->menuHelp->addAction("developers", this, SLOT(developers()));
-    ui->menuHelp->addAction("participate", this, SLOT(participate()));
-    ui->menuHelp->addAction("help", this, SLOT(help()));
+    ui->menuHelp->addAction("about CCEAP", this, SLOT(aboutCceapMenuBarHandler()));
+    ui->menuHelp->addAction("developers", this, SLOT(developersMenuBarHandler()));
+    ui->menuHelp->addAction("participate", this, SLOT(participateMenuBarHandler()));
+    ui->menuHelp->addAction("help", this, SLOT(helpMenuBarHandler()));
 }
-void ServerGui::aboutCceap(){
+void ServerGui::aboutCceapMenuBarHandler(){
     QStringList message;
     message << "The Covert Channel Educational Analysis Protocol (CCEAP)\n"
                 " is a simple network protocol designed for teaching\n"
@@ -154,10 +134,11 @@ void ServerGui::aboutCceap(){
     message << "www.wendzel.de (wendzel (at) hs-worms (dot) de). Research on \n"
                "steganographic/covert channel teaching in higher education is currently performed by \n"
                "Steffen Wendzel and Wojciech Mazurczyk.";
+
     display(message);
 
 }
-void ServerGui::developers(){
+void ServerGui::developersMenuBarHandler(){
 
     QStringList message;
     message << "TThe CCEAP program is written by Prof. Dr. Steffen Wendzel. Visit the following link";
@@ -177,7 +158,7 @@ void ServerGui::developers(){
     display(message);
 
 }
-void ServerGui::participate(){
+void ServerGui::participateMenuBarHandler(){
     QStringList message;
     message << "Please contact Prof Wendzel to participate to CCEAP.\n";
     message << "www.wendzel.de";
@@ -185,11 +166,17 @@ void ServerGui::participate(){
 
     display(message);
 }
-void ServerGui::help(){
-    execute("./server -h");
-}
-void ServerGui::execute(QString command){
-
+void ServerGui::helpMenuBarHandler(){execute("-h");}
+void ServerGui::execute(QString parameter){
+    QString command= "./server ";
+    // determine if the architecture is windows or unix, then run the approptiate command
+    #if (defined (_WIN32) || defined (_WIN64))
+        command = "start server.exe "+parameter;
+    #elif (defined (LINUX) || defined (__linux__))
+        command = "./server "+parameter;
+    #else
+        command = "./server "+parameter;
+    #endif
     stringList.clear();
     ServerThread *serverThread = new ServerThread(command);
     QObject::connect(serverThread,SIGNAL(signal(QStringList)),this, SLOT(dataReceivedFromServer(QStringList)));

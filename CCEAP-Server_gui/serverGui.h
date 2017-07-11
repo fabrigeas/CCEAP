@@ -26,10 +26,10 @@ class ServerGui : public QMainWindow
         void on_startServerButton_clicked();
         void dataReceivedFromServer(QStringList stringList);
 
-        void aboutCceap();
-        void developers();
-        void participate();
-        void help();
+        void aboutCceapMenuBarHandler();
+        void developersMenuBarHandler();
+        void helpMenuBarHandler();
+        void participateMenuBarHandler();
 
     signals:
 
