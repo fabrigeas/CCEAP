@@ -17,7 +17,7 @@ supervised by: [prof. Dr. Steffen Wendzel](http://steffen-wendzel.blogspot.de/p/
 ### because I missread 7.07.2017 to 17.07.2017.
 
 
-## 1. Abstract
+## Abstract
 
 The thesis discusses the development of a Graphical User Interface (GUI) to complement a command line progra CCEAP.
 
@@ -29,35 +29,28 @@ The CCEAP is an existing command line program that required a user interface, so
 
 This is also what I did in this thesis.
 
-## 2. About the CCEAP-GUI
+## About the CCEAP-GUI
 
 The Program is written in C++ using QT Creator,
 
 it consists of 2 programs, a server and a client that each complement/emulates the innitial CCEAP cmd programs.
 
-### 1. Server: 
-
-The server is started on a given TCP Port Number and it waits for incomming client connections
-
-### 2. Client
-
-The client is started with a given IP address and TCP Port Number of the server as well as several CCEAP Paramenters
-CCEAP Parameters. see [CCEAP Parameters](https://github.com/cdpxe/CCEAP/tree/master/documentation)
+1. Server: 
+   The server is started on a given TCP Port Number and it waits for incomming client connections
+2. Client
+   The client is started with a given IP address and TCP Port Number of the server as well as several CCEAP Paramenters
+   CCEAP Parameters. see [CCEAP Parameters](https://github.com/cdpxe/CCEAP/tree/master/documentation)
  
 
-## 3. About the content of this repository
+## About the content of this repository
 
-### 1. CCEAP-Serveris:
-contains the qt creator project for the server-GUI tool
+1. /CCEAP-Serveris/: contains the qt creator project for the server-GUI tool
 
-### 2. CCEAP-Client: 
-Contains the qt creator project for the client-GUI tool
+2. /CCEAP-Client/: Contains the qt creator project for the client-GUI tool
 
-### 3. CCEAP-master:
-Contains the repository downloaded from Prof Steffen Wendzel in June 2017 [to CCEAP-master](https://github.com/cdpxe/CCEAP)
+3. /CCEAP-master/: Contains the repository downloaded from Prof Steffen Wendzel in June 2017 [to CCEAP-master](https://github.com/cdpxe/CCEAP)
 
-### 4. deployed: 
-contains the folder in which the compiled programs are stored
+4. /deployed/: contains the folder in which the compiled programs are stored
 
 
 # Running the programs
