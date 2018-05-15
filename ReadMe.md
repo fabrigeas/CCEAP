@@ -21,8 +21,7 @@ supervised by: [prof. Dr. Steffen Wendzel](http://steffen-wendzel.blogspot.de/p/
 
 The thesis discusses the development of a Graphical User Interface (GUI) to complement a command line progra CCEAP.
 
-[CCEAP](https://github.com/cdpxe/CCEAP) (Covert Channel Educational Analysis Protocal) is a network protocl in the form a command line program designed by my supervisor 
-
+[CCEAP](https://github.com/cdpxe/CCEAP) (Covert Channel Educational Analysis Protocal) is a network protocl in the form a command line program designed by my supervisor
 [prof. Dr. Steffen Wendzel](http://steffen-wendzel.blogspot.de/p/blog-page.html), to help teach covert channels and hidding patterns.
 
 The CCEAP is an existing command line program that required a user interface, so my task was to create such a User Interface,
