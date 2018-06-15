@@ -68,3 +68,7 @@ Once copied in a target folder, double click on either of server-GUI.exe or clie
     ./server-gui
       
 
+## Screenshots
+
+1. Server command line
+![Server cmd](./scrot/Screenshots/001_server-P1234.png)
